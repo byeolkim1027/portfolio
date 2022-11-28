@@ -1,0 +1,57 @@
+@charset "UTF-8";
+/* 모든 테그의 스타일 초기화*/
+
+
+/*브라우저에서 기본으로 제공하는 모든여백을 빼주는 테그*/
+body,header,footer,div,p,nav,section,h1,h2,h3,h4,h5,h6,button,a,ol,ul,li,address,strong,span,em,i,dl,dt,dd,form,fieldset,legend,input,textarea,select,table,caption,colgroup,col,thead,tbody,tfoot,tr,th,td{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    /*width/height and padding이 결합이 되면 사이즈가 늘어남, 이걸 막는 스타일
+      padding을 줘도 width/height 가 유지가됨*/
+}
+/*a테그에 브라우저가 주는 기본속성 초기화*/
+a{ 
+    color: inherit;
+    text-decoration: none;
+}
+/*브라우저에서 기울임을 주는것을 초기화*/
+em,address{
+    font-style: normal;
+}
+/*항목앞에 동그라미 삭제*/
+ul,ol,li{
+    list-style: none;
+}
+/* form 테그가 문자스타일을 상속받지 않아서 강제로 상속받게 하기 */
+form,input,select,textarea,button{
+    color: inherit;
+    font-family: inherit;
+    font-size: inherit;
+    font-weight: inherit;
+    line-height: inherit;
+    letter-spacing: inherit;
+    /*서체를 상속받아야함- button 은 body에서 
+      적용한 서체를 상속받지 않음- form 관련테그는 모두다그럼*/
+}
+fieldset{
+    border: 0;
+}
+legend{
+    display: none;/* form 테그의 legend는 타이틀로 숨김처리 */
+}
+button{
+    background-color: transparent;/*뒷배경이 투명하게*/
+    /*none 는 background 라고 줘야한다*/
+    /* background: none; */
+    border: 0;
+    cursor: pointer;/*마우스오버시에 손바닥모양으로 바꿔줌*/
+}
+table caption{
+    display: none;
+}
+
+/*글자를 두껍게 하는 테그는 모두 일반 두께로 변형*/
+h1,h2,h3,h4,h5,h6,strong,th{
+    font-weight: 400;
+}

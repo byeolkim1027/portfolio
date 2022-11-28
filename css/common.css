@@ -1,0 +1,182 @@
+/* 모든 페이지에 공통으로 들어간느 스타일 (header/footer) */
+
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;400;700&display=swap');
+@font-face {
+    font-family: 'Cafe24Shiningstar';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_twelve@1.1/Cafe24Shiningstar.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'NanumSquareNeo-Variable';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_11-01@1.0/NanumSquareNeo-Variable.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+html,body{
+    /*브라우저사이즈가 작아졌을때 배경이 안잘리게 하는테그,(가로스크롤이 생성되었을때 배경이 않잘리기위해*/
+    color: #3d3d3d;
+    line-height: 1.5;
+    /*폰트 적용 우선순위
+      만약에 웹폰트가 지원되지 않으면 그 다음에 선언된 폰트가 적용됨
+      apple sd gothic- 아이폰에서 지원하는 폰트*/
+    font-family: 'Noto Sans KR', 'NanumGothic', 'Malgun Gothic', 'Apple SD Gothic', 'Apple SD Gothic Neo', 'Dotum', sans-serif;
+    font-size: 15px;
+    font-weight: 400;
+    /* letter-spacing: -0.05em; */ 
+    word-break: keep-all;/*단어별 줄바꿈*/
+}
+#wrap{/*id="wrap"*/
+    overflow: hidden;
+    /*header의 기준점이 되야 헤더가 정확한 위치에 배열이 된다
+      윈도우 사이즈가 줄어들었을때 스크린 크기에 따라 헤더가 따라오는게 아니라
+      1400이전으로 사이즈가 줄어들면 가로스크롤바가 생기면서 원래 위치인 제일 오른쪽에있는
+      컨텐츠가 그자리에 있는다*/
+    position: relative;
+    min-width: 350px;/*pc에서 부터 최소 넓이를 준다(그래야 320아래로 내려갓을때 가로스크롤이 생긴다)*/       
+}
+/*컨텐츠의 넓이를 제한하고 홈페이지를 브라우저 가운데에 배치*/
+.wrapper{
+    width: 100%;
+    max-width: 1440px;
+    padding: 0 20px;
+    margin: 0 auto;
+    /*1400px 이하부터 320px 까지 모든 사이즈 반응형
+      1400px 일때에도 좌우에 여백은 유지해야함(1400이상에서 1400px 이하로 변경되는 점 - 반응형으로 전환되는점)
+      부드럽게 여백을 유지하면서 전환해야함
+      원래 좌우에 여백이 20px씩 들어가 있는 걸로 스타일을 줌(모바일에서 처럼 20기본으로 좌우에)
+      1400px 컨텐츠 영역인데 왼쪽20 + 오른쪽20 = 1440px이 넓이 
+      padding으로 좌우에 여백을 20px씩 줌*/
+}
+
+@media screen and (max-width:1000px){
+    html,body{
+        font-size: 14px;
+    }
+}
+
+@media screen and (max-width:640px){
+    /*640px 이하의 디바이스에서만 아래 css가 적용된다*/
+    /*pc에서는 1280px 이라는 콘텐츠 고정넓이가 존재했지만
+      모바일에서는 디바이스 넓이에 맞춰서 꽉차게 구현
+      구현방식이 달라서 고정값을 모두 삭제*/
+    html,body{
+        /*모바일기기가 전부 달라서 고정된값을 풀어주고 내부요소가 존재하는 만큼*/
+        font-size: 13px;
+    }
+    .wrapper{
+        width: auto;
+        margin: 0;/*pc에서부터 패딩을 20 을줘서 모바일에서는 안줘도 된다*/
+    }
+}/*media 종료*/
+.clearfix::after{display:block;clear:both;content:".";visibility:hidden;height:0;}
+.clearfix{display:block;}
+
+/* wrapper와 동일한 사이즈를 가진 position:relative 를 요소는 cnt_wrap를 줘서 항상 부름*/
+.cnt_wrap{
+    position: relative;
+}
+
+.skip_nav{
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 1000000;/*제일높은 그무엇보다 제일많은값을준다*/
+    width: 100%;
+}
+.skip_nav a{
+    position: absolute;
+    left: 0;
+    top: -10000px;/*tap키로 이동할때만 보인다 그냥은 안보인다*/
+    width: 100%;
+    height: 40px;
+    line-height: 40px;
+    background-color: #0051A7;
+    color: #fff;
+    text-align: center;
+}
+.skip_nav a:focus{
+    top: 0;/*tap키로 이동할때만 보인다 그냥은 안보인다*/
+}
+
+.header{
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 300;
+    width: 100%;
+    height: 80px;
+    color: #FFF;
+    background-color: rgba(147,179,194,0.5);
+}
+.header .gnb ul{
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.header .gnb ul li{
+    width: 152px;
+    text-align: center;
+}
+.header .gnb ul li.active a{
+    font-weight: 700;
+}
+.header .gnb ul li a{
+    position: relative;
+    display: block;
+    line-height: 80px;
+    font-size: 40px;
+    font-family: 'Cafe24Shiningstar';
+}
+.header .gnb ul li.active a::before{
+    position: absolute;
+    right: 31px;
+    top: 17px;
+    width: 7px;
+    height: 7px;
+    background: rgba(255,255,255,0.5);
+    border-radius: 100%;
+    content: "";
+}
+.header .gnb ul li:hover a{
+    border-bottom: 2px solid #FFF;
+}
+
+.footer{
+    height: 245px;
+    text-align: center;
+}
+.footer .f_tit{
+    display: inline-block;
+    position: relative;
+}
+.footer .f_tit .circle1{
+    position: absolute;
+    top: 30px;
+    left: -45px;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background-color: #B7DCF5;
+    z-index: 50;
+}
+.footer .f_tit .circle2{
+    position: absolute;
+    top: 64px;
+    left: 10px;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background-color: #DCEFED;
+    z-index: 100;
+}
+.footer .f_tit .txt{
+    display: inline-block;
+    position: relative;
+    z-index: 200;
+    margin: 70px 0 0 0;
+    font-family: 'Cafe24Shiningstar';
+    font-size: 120px;
+    line-height: 1;
+}

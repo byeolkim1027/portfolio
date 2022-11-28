@@ -1,0 +1,76 @@
+@import url('default.css');
+@import url('common.css');
+@import url('content.css');
+
+.sub_visual{
+    height: 400px;
+    background-image: url(../images/sub/sub1.png);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.sub_visual.sub1{
+    background-image: url(../images/sub/sub1.png);
+}
+.sub_visual.sub2{
+    background-image: url(../images/sub/sub2.png);
+}
+@media screen and (max-width:640px){
+    .sub_visual{
+        height: 200px;
+    }
+}
+.container{
+    min-height: 300px;
+}
+.container .sub_tit{
+    margin: 100px 0 80px 0;
+    color: #8D6B65;
+}
+.container .sub_tit h2{
+    position: relative;
+    font-family: 'GyeonggiBatang';
+    font-size: 70px;
+    font-weight: 700;
+    line-height: 1.2;
+}
+.container .sub_tit h2::after{
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 700px;
+    height: 1px;
+    background-color: #CCB9AD;
+    content: "";
+}
+.container .sub_tit p{
+    font-family: 'GyeonggiBatang';
+    font-size: 25px;
+    line-height: 1;
+}
+.container .sub_tit p strong{
+    font-size: 50px;
+}
+.container #contents{
+    margin: 0 0 200px 0;
+}
+@media screen and (max-width:640px){
+    .container .sub_tit{
+        margin: 60px 0 35px 0;
+    }
+    .container .sub_tit h2{
+        font-size: 45px;
+    }
+    .container .sub_tit h2::after{
+        width: 265px;
+    }
+    .container .sub_tit p{
+        font-size: 17px;
+    }
+    .container .sub_tit p strong{
+        font-size: 25px;
+    }
+    .container #contents{
+        margin: 0 0 85px 0;
+    }
+}

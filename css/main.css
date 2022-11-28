@@ -1,0 +1,576 @@
+@import url('default.css');
+@import url('common.css');
+
+.intro{
+    height: 880px;
+    background: url(../images/portfolio_bg.png) no-repeat center center/cover;
+    color: #fff;
+    text-align: center;
+}
+.intro .inner{
+    padding: 280px 0 0 0;
+}
+.intro h1{
+    font-family: 'Cafe24Shiningstar';
+    font-size: 150px;
+    line-height: 0.8;
+}
+.intro h1 .block{
+    display: block;
+}
+.type_wrap{
+    display: grid;
+    place-items: center;
+    margin: 50px 0 0 0;
+}
+.typing{
+    width: 33ch;
+    animation: typing 2s steps(20), blink .5s step-end infinite alternate;
+    white-space: nowrap;
+    overflow: hidden;
+    border-right: 3px solid;
+    font-family: 'Cafe24Shiningstar';
+    font-size: 40px;
+    line-height: 1;
+}
+@keyframes typing {
+    from{width: 0}
+}
+@keyframes blink {
+    50%{border-color: transparent}
+}
+
+.intro .scroll{
+    position: relative;
+    left: 50%;
+    bottom: -130px;
+    z-index: 12;
+    color: #FFF;
+    text-align: center;
+    transform: translate(-50%,0);
+}
+.intro .scroll strong{
+    display: block;
+    margin-top: 8px;
+    font-size: 12px;
+    color: rgba(255,255,255,0.5);
+}
+.intro .scroll img{
+    animation-name: scroll_move;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+    animation-timing-function: cubic-bezier(.96,.08,.37,.98);
+}
+@keyframes scroll_move{
+    0%{transform: translate(0,0);}
+    50%{transform: translate(0,-20px);}
+    100%{transform: translate(0,0);}
+}
+
+.bg_txt_container{
+    position: relative;
+    height: 200px;
+}
+.bg_txt_container .bg_txt .outline{
+    color: #FFF;
+    text-shadow: -2px 0 #B4D3E8, 0 2px #B4D3E8, 2px 0 #B4D3E8, 0 -2px #B4D3E8;
+}
+.bg_txt_container .bg_txt{
+    position: absolute;
+    left: 0;
+    top: 0;
+    font-family: 'Cafe24Shiningstar';
+    font-size: 170px;
+    line-height: 1;
+    color: #B4D3E8;
+    white-space: nowrap;
+    animation-name: bg_txt_ani;
+    animation-duration: 20s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+}
+@keyframes bg_txt_ani{
+    0% { transform:translateX(0); }  
+    100% { transform:translateX(-50.3%); } 
+}
+
+.about{
+    margin: 85px 0 150px 0;
+}
+.about .profile{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.about .profile .about_left{
+    width: 34%;
+    margin-right: 7%;
+}
+.about .profile .about_left h2{
+    position: relative;
+    font-family: 'Cafe24Shiningstar';
+    font-size: 120px;
+    line-height: 1;
+}
+.about .profile .about_left h2 .circle{
+    display: inline-block;
+    width: 70px;
+    height: 70px;
+    background: #B7DCF5;
+    border-radius: 50%;
+    position: absolute;
+    right: -2%;
+    top: 0;
+    z-index: 100;
+    transform: rotate(45deg);
+    animation: animateHeart 2s infinite;
+}
+.about .profile .about_left h2 .about_tit{
+    position: relative;
+    z-index: 200;
+}
+@keyframes animateHeart {
+    0%{
+      transform: rotate(45deg) scale(0.8);
+    }
+    5%{
+      transform: rotate(45deg) scale(0.9);
+    }
+    10%{
+      transform: rotate(45deg) scale(0.8);
+    }
+    15%{
+      transform: rotate(45deg) scale(1);
+    }
+    50%{
+      transform: rotate(45deg) scale(0.8);
+    }
+    100%{
+      transform: rotate(45deg) scale(0.8);
+    }
+}
+.about .profile .about_left .info_left{
+    margin: 50px 0 0 80px;
+}
+.about .profile .about_left .info_left .name{
+    font-size: 25px;
+    font-weight: 700;
+}
+.about .profile .about_left .info_left .hashtag{
+    margin: 15px 6% 0 0;
+    display: inline-block;
+    font-size: 20px;
+    font-weight: 700;
+    color: #9BBED2;
+}
+.about .profile .about_left .info_left p{
+    font-size: 20px;
+    font-weight: 700;
+}
+.about .profile .about_right{
+    margin: 40px;
+    width: 43%;
+}
+.about .profile .about_right .contact{
+    position: relative;
+    display: flex;
+    align-items: center;
+    margin: 0 0 20px 0;
+}
+.about .profile .about_right .contact::after{
+    position: absolute;
+    right: 0;
+    bottom: -5%;
+    width: 75%;
+    height: 1px;
+    background-color: #ccc;
+    content: "";
+}
+.about .profile .about_right h3{
+    width: 26%;
+    font-size: 20px;
+    font-weight: 700;
+}
+.about .profile .about_right p{
+    width: 100%;
+    margin: 0 0 10px 0;
+}
+.about .profile .about_right .detail{
+    position: relative;
+    display: flex;
+    align-items: center;
+    margin: 0 0 20px 0;
+}
+.about .profile .about_right .detail::after{
+    position: absolute;
+    right: 0;
+    bottom: -5%;
+    width: 75%;
+    height: 1px;
+    background-color: #ccc;
+    content: "";
+}
+.about .profile .about_right .ability{
+    position: relative;
+    display: flex;
+    align-items: center;
+    margin: 0 0 20px 0;
+}
+.about .profile .about_right .ability::after{
+    position: absolute;
+    right: 0;
+    bottom: -5%;
+    width: 75%;
+    height: 1px;
+    background-color: #ccc;
+    content: "";
+}
+.about .profile .about_right .language{
+    display: flex;
+    align-items: center;
+    margin: 0 0 20px 0;
+}
+.work{
+    position: relative;
+    background: url(../images/porfolio_bg2.png) no-repeat center center/cover;
+}
+.work .works_tit{
+    position: absolute;
+    top: -75px;
+    left: calc(50% - 700px);
+}
+.work .works_tit .circle{
+    position: absolute;
+    display: inline-block;
+    width: 108px;
+    height: 108px;
+    background: #B7DCF5;
+    border-radius: 50%;
+    left: -22%;
+    top: -10px;
+    z-index: 100;
+    transform: rotate(45deg);
+    animation: animateHeart 2s infinite;
+}
+.work .works_tit .tit_txt{
+    position: relative;
+    z-index: 200;
+    font-family: 'Cafe24Shiningstar';
+    font-size: 160px;
+    line-height: 1;
+}
+.work .paradise{
+    display: flex;
+    justify-content: center;
+    padding: 125px 0 0 0;
+    height: 750px;
+}
+.work .paradise .pic{
+    width: 51%;
+    margin: 35px 7% 0 0;
+}
+.work .paradise .pic a{
+    display: block;
+    width: 716px;
+    height: 477px;
+}
+.work .paradise .pic a img{
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.work .paradise .cnts{
+    width: 30%;
+}
+.work .paradise .cnts .cnts_tit{
+    padding: 0 0 10px 0;
+    border-bottom: 1px solid #ccc;
+}
+.work .paradise .cnts .cnts_tit strong{
+    display: block;
+    font-family: 'NanumSquareNeo-Variable';
+    font-size: 50px;
+    font-weight: 900;
+    line-height: 1.2;
+}
+.work .paradise .cnts .cnts_tit span{
+    display: block;
+    font-family: 'NanumSquareNeo-Variable';
+    font-size: 25px;
+    font-weight: 900;
+}
+.work .paradise .cnts .cnts_list{
+    margin: 20px 0 0 0;
+}
+.work .paradise .cnts .cnts_list h3{
+    width: 33%;
+    font-size: 17px;
+    font-weight: 700;
+}
+.work .paradise .cnts .cnts_list p{
+    width: 65%;
+}
+.work .paradise .cnts .cnts_list div{
+    position: relative;
+    display: flex;
+    margin: 0 0 25px 0;
+}
+.work .paradise .cnts .cnts_list div.color_wrap{
+    margin: 0;
+}
+.work .paradise .cnts .cnts_list .color_wrap span{
+    display: inline-block;
+    margin: 0 20px 0 0;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+}
+.work .paradise .cnts .cnts_list .color_wrap .grn{
+    background-color: #466034;
+}
+.work .paradise .cnts .cnts_list .color_wrap .blu{
+    background-color: #04758D;
+}
+.work .paradise .cnts .cnts_list .color_wrap .brn{
+    background-color: #544636;
+}
+
+.royal{
+    margin: 85px 0 70px 0;
+}
+.royal .cnts_tit strong{
+    display: block;
+    font-family: 'NanumSquareNeo-Variable';
+    font-size: 50px;
+    font-weight: 900;
+    line-height: 1.2;
+}
+.royal .cnts_tit span{
+    display: block;
+    font-family: 'NanumSquareNeo-Variable';
+    font-size: 25px;
+    font-weight: 900;
+}
+.royal .pics{
+    margin: 80px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.royal .pics .pic1 a{
+    display: block;
+    width: 356px;
+    height: 227px;
+}
+.royal .pics .pic2 a{
+    display: block;
+    width: 216px;
+    height: 297px;
+}
+.royal .pics .pic3 a{
+    display: block;
+    width: 224px;
+    height: 283px;
+}
+.royal .pics div a img{
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.royal .pics .pic2{
+    position: relative;
+}
+.royal .pics .pic2 a img{
+    position: relative;
+    z-index: 200;
+}
+.royal .pics .pic2 .circle1{
+    display: inline-block;
+    width: 200px;
+    height: 200px;
+    background: #B7DCF5;
+    border-radius: 50%;
+    position: absolute;
+    left: -58%;
+    top: -93px;
+    z-index: 100;
+    transform: rotate(45deg);
+}
+.royal .pics .pic2 .circle2{
+    display: inline-block;
+    width: 135px;
+    height: 135px;
+    background: #70C2F9;
+    border-radius: 50%;
+    position: absolute;
+    right: 50px;
+    top: -80px;
+    z-index: 50;
+    transform: rotate(45deg);
+    animation: animateHeart 4s infinite;
+}
+.royal .pics .pic3{
+    position: relative;
+}
+.royal .pics .pic3 a img{
+    z-index: 300;
+    position: relative;
+}
+.royal .pics .pic3 .circle3{
+    display: inline-block;
+    width: 250px;
+    height: 250px;
+    background: #E4F1F9;
+    border-radius: 50%;
+    position: absolute;
+    right: -50%;
+    top: -25px;
+    z-index: 100;
+    transform: rotate(45deg);
+    animation: animateHeart 3s infinite;
+}
+.royal .cnts{
+    display: flex;
+}
+.royal .cnts .cnt{
+    width: 28%;
+}
+.royal .cnts .cnt.cnt2{
+    margin: 0 17% 0 5%;
+}
+.royal .cnts .cnt .cnts_wrap{
+    display: flex;
+    margin: 0 0 25px 0;
+}
+.royal .cnts .cnt .cnts_wrap h3{
+    width: 33%;
+    font-size: 17px;
+    font-weight: 700;
+}
+.royal .cnts .cnt .cnts_wrap p{
+    width: 65%;
+}
+.royal .cnts .cnt .cnts_wrap .color_wrap span{
+    display: inline-block;
+    margin: 0 20px 0 0;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+}
+.royal .cnts .cnt .cnts_wrap .color_wrap .rd{
+    background-color: #E60F1F;
+}
+.royal .cnts .cnt .cnts_wrap .color_wrap .gry{
+    background-color: #90A6BD;
+}
+.royal .cnts .cnt .cnts_wrap .color_wrap .ylw{
+    background-color: #C18D4C;
+}
+
+.moreto{
+    background: url(../images/portfolio_bg3.png) no-repeat center center/cover;
+}
+.moreto .moreto_tit{
+    position: relative;
+}
+.moreto .moreto_tit h2{
+    position: absolute;
+    top: -75px;
+    left: 0;
+    font-family: 'Cafe24Shiningstar';
+    font-size: 160px;
+    line-height: 1;
+}
+.moreto .cnd{
+    display: flex;
+    justify-content: center;
+    padding: 125px 0 0 0;
+    height: 750px;
+}
+.moreto .cnd .pic{
+    width: 51%;
+    margin: 35px 7% 0 0;
+}
+.moreto .cnd .pic a{
+    display: block;
+    width: 736px;
+    height: 418px;
+}
+.moreto .cnd .pic a img{
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.moreto .cnd .cnts{
+    width: 35%;
+}
+.moreto .cnd .cnts .cnts_tit{
+    position: relative;
+    padding: 0 0 10px 0;
+    border-bottom: 1px solid #ccc;
+}
+.moreto .cnd .cnts .cnts_tit .circle{
+    position: absolute;
+    z-index: 100;
+    top: -70px;
+    right: 110px;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background-color: #B7DCF5;
+    transform: rotate(45deg);
+    animation: animateHeart 3s infinite;
+}
+.moreto .cnd .cnts .cnts_tit strong{
+    position: relative;
+    z-index: 200;
+    display: block;
+    font-family: 'NanumSquareNeo-Variable';
+    font-size: 50px;
+    font-weight: 900;
+    line-height: 1.2;
+}
+.moreto .cnd .cnts .cnts_tit span{
+    display: block;
+    font-family: 'NanumSquareNeo-Variable';
+    font-size: 25px;
+    font-weight: 900;
+}
+.moreto .cnd .cnts .cnts_list{
+    margin: 20px 0 0 0;
+}
+.moreto .cnd .cnts .cnts_list h3{
+    width: 33%;
+    font-size: 17px;
+    font-weight: 700;
+}
+.moreto .cnd .cnts .cnts_list p{
+    width: 65%;
+}
+.moreto .cnd .cnts .cnts_list div{
+    position: relative;
+    display: flex;
+    margin: 0 0 25px 0;
+}
+.moreto .cnd .cnts .cnts_list div.color_wrap{
+    margin: 0;
+}
+.moreto .cnd .cnts .cnts_list .color_wrap span{
+    display: inline-block;
+    margin: 0 20px 0 0;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+}
+.moreto .cnd .cnts .cnts_list .color_wrap .grn{
+    background-color: #0054A5;
+}
+.moreto .cnd .cnts .cnts_list .color_wrap .blu{
+    background-color: #2D4F0E;
+}
+.moreto .cnd .cnts .cnts_list .color_wrap .brn{
+    background-color: #715542;
+}
