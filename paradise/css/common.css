@@ -88,11 +88,6 @@ html,body{
     top: 0;/*tap키로 이동할때만 보인다 그냥은 안보인다*/
 }
 
-/* 브라우저에서 글자를 드래그 했을때 드래그한 영역의 색과 글자색
-   -moz-, -webkit- 이 앞에 붙은 속성은 표준화 되지 않은 속성*/
-::selection{background: #926D49;color: #fff;}
-::-moz-selection{background: #926D49;color: #fff;}
-::-webkit-selection{background: #926D49;color: #fff;}
 
 
 .header{
