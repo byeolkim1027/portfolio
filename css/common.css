@@ -142,6 +142,14 @@ html,body{
 .header .gnb ul li:hover a{
     border-bottom: 2px solid #FFF;
 }
+.header.is_up{
+    transform: translateY(-100%);
+}
+.header.is_down{
+    transform: translateY(0%);
+    backdrop-filter: blur(10px);
+    background-color: rgba(147,179,194,0.5);
+}
 
 .footer{
     height: 245px;
