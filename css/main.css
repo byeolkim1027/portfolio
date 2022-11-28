@@ -11,6 +11,7 @@
     padding: 280px 0 0 0;
 }
 .intro h1{
+    margin: 0 0 40px 0;
     font-family: 'Cafe24Shiningstar';
     font-size: 150px;
     line-height: 0.8;
@@ -18,28 +19,14 @@
 .intro h1 .block{
     display: block;
 }
-.type_wrap{
-    display: grid;
-    place-items: center;
-    margin: 50px 0 0 0;
-}
 .typing{
-    width: 33ch;
-    animation: typing 2s steps(20), blink .5s step-end infinite alternate;
-    white-space: nowrap;
-    overflow: hidden;
-    border-right: 3px solid;
+    display: inline;
+    vertical-align: middle;
+    border-right: .05em solid #fff;
+    animation:  cursor 0.2s ease infinite;
     font-family: 'Cafe24Shiningstar';
     font-size: 40px;
-    line-height: 1;
 }
-@keyframes typing {
-    from{width: 0}
-}
-@keyframes blink {
-    50%{border-color: transparent}
-}
-
 .intro .scroll{
     position: relative;
     left: 50%;
@@ -274,11 +261,36 @@
     width: 716px;
     height: 477px;
 }
+.work .paradise .pic a:hover img{
+    transform: translate(-15px,-15px);
+}
 .work .paradise .pic a img{
     display: block;
     width: 100%;
     height: 100%;
     object-fit: cover;
+    transition: transform 0.3s
+}
+.work .paradise .pic a .img_txt{
+    opacity: 0;
+    position: absolute;
+    top: 30%;
+    left: 37%;
+    width: 200px;
+    height: 50px;
+    border-radius: 10px;
+    background-color: rgba(0,0,0,0.5);
+    text-align: center;
+}
+.work .paradise .pic a .img_txt span{
+    font-family: 'Cafe24Shiningstar';
+    font-size: 40px;
+    line-height: 50px;
+    color: #fff;
+    transition: transform 0.3s
+}
+.work .paradise .pic a:hover .img_txt{
+    opacity: 1;
 }
 .work .paradise .cnts{
     width: 30%;
@@ -378,6 +390,38 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
+    transition: transform 0.3s
+}
+.royal .pics div a:hover img{
+    transform: translate(-15px,-15px);
+}
+.royal .pics div a .img_txt{
+    opacity: 0;
+    position: absolute;
+    z-index: 500;
+    top: 35%;
+    left: 12%;
+    width: 150px;
+    height: 50px;
+    border-radius: 10px;
+    background-color: rgba(0,0,0,0.5);
+    text-align: center;
+}
+.royal .pics div a .img_txt span{
+    font-family: 'Cafe24Shiningstar';
+    font-size: 30px;
+    line-height: 50px;
+    color: #fff;
+    transition: transform 0.3s
+}
+.royal .pics div.pic1 a .img_txt{
+    left: 25%;
+}
+.royal .pics div a:hover .img_txt{
+    opacity: 1;
+}
+.royal .pics a:hover img{
+    transform: translate(-15px,-15px);
 }
 .royal .pics .pic2{
     position: relative;
@@ -499,10 +543,36 @@
     height: 418px;
 }
 .moreto .cnd .pic a img{
+    position: relative;
     display: block;
     width: 100%;
     height: 100%;
     object-fit: cover;
+    transition: transform 0.3s
+}
+.moreto .cnd .pic a:hover img{
+    transform: translate(-15px,-15px);
+}
+.moreto .cnd .pic a .img_txt{
+    opacity: 0;
+    position: absolute;
+    top: 30%;
+    left: 30%;
+    width: 200px;
+    height: 50px;
+    border-radius: 10px;
+    background-color: rgba(0,0,0,0.5);
+    text-align: center;
+}
+.moreto .cnd .pic a .img_txt span{
+    font-family: 'Cafe24Shiningstar';
+    font-size: 40px;
+    line-height: 50px;
+    color: #fff;
+    transition: transform 0.3s
+}
+.moreto .cnd .pic a:hover .img_txt{
+    opacity: 1;
 }
 .moreto .cnd .cnts{
     width: 35%;
