@@ -1,0 +1,151 @@
+@import "_var.scss";
+/* 각각의 컨텐츠 페이지 스타일 */
+/* Chairman > About Us > B&tailor */
+.cts_about1{
+    margin: 48px 0 100px 0;
+    .about_top{
+        overflow: hidden;//CEO 이미지가 .bg 영역밖으로 나가는걸 없애는값 
+        position: relative;// 배경과 ceo이미지가 영역밖으로 나가야되서 그것에 대한 기준점
+        padding: 233px 0 0 0;
+        p{
+            @include font_serif;
+            position: absolute;
+            top: 463px;
+            left: calc(50% - 700px);
+            color: $w_basic_color;
+            font-size: 30px;
+        }
+        img{
+            position: absolute;//about_top에 준 relative 기준으로 정렬
+            top: 0;
+            left: calc(50% + 243px);//wrapper가 없기때문에 가운데 기점으로 왼쪽에서 떨어지는값 잰다
+        }
+        .bg{
+            height: 590px;
+            background: url(/design1/bntailor/images/contents/about_top_bg.png) no-repeat center center/cover;
+
+        }
+    }
+    .about_sub{
+        position: relative;
+        z-index: 10;
+        padding: 60px 0 0 80px;
+        margin-top: -185px;
+        margin-left: calc(50% - 100px);
+        background-color: #fff;
+        .sub_wrap{
+            width: 713px;
+        }
+        .tit{
+            @include font_serif;
+            font-size: 40px;
+        }
+        .cnt{
+            margin: 20px 0 20px 0;
+            font-size: 20px;
+        }
+        .sign{
+            font-size: 30px;
+            text-align: right;
+        }
+    }
+}
+@media screen and (max-width: 1280px){
+    .cts_about1{
+        margin: 48px 0 100px 0;
+        .about_top{
+            overflow: hidden;//CEO 이미지가 .bg 영역밖으로 나가는걸 없애는값 
+            position: relative;// 배경과 ceo이미지가 영역밖으로 나가야되서 그것에 대한 기준점
+            padding: 150px 0 0 0;
+            p{
+                @include font_serif;
+                position: absolute;
+                top: 400px;
+                left: calc(50% - 600px);
+                color: $w_basic_color;
+                font-size: 30px;
+            }
+            img{
+                position: absolute;//about_top에 준 relative 기준으로 정렬
+                top: 0;
+                left: calc(50% + 243px);//wrapper가 없기때문에 가운데 기점으로 왼쪽에서 떨어지는값 잰다
+            }
+            .bg{
+                height: 590px;
+                background: url(/design1/bntailor/images/contents/about_top_bg.png) no-repeat center center/cover;
+    
+            }
+        }
+        .about_sub{
+            position: relative;
+            z-index: 10;
+            padding: 40px 0 0 60px;
+            margin-top: -185px;
+            margin-left: calc(50% - 20px);
+            background-color: #fff;
+            .sub_wrap{
+                width: 570px;
+            }
+            .tit{
+                font-size: 35px;
+            }
+            .cnt{
+                margin: 20px 0 20px 0;
+                font-size: 15px;
+            }
+            .sign{
+                font-size: 17px;
+            }
+        }
+    }
+}
+@media screen and (max-width: 1000px){
+
+}
+@media screen and (max-width: 640px){
+    .cts_about1{
+        margin: 48px 0 100px 0;
+        .about_top{
+            padding: 40px 0 0 0;
+            p{
+                /*컨텐츠를 위아래 가운데 정렬하고 브라우저 사이즈 늘고 줄었을때
+                  오른쪽 글자와 왼쪽 이미지가 같이 움직일수있게 */
+                top: calc(50% + 10px);
+                transform: translateY(-50%);
+                left: 20px;
+                margin-right: 160px;
+                font-size: 15px;
+                .m_no{
+                    display: none;
+                }
+            }
+            img{
+                left: auto;//pc에서 준 left값 풀어주는게 auto
+                right: 0;
+                width: 152px;
+            }
+            .bg{
+                height: 180px;    
+            }
+        }
+        .about_sub{
+            padding: 0;
+            margin-top: 20px;
+            margin-left: 20px;
+            margin-right: 20px;
+            .sub_wrap{
+                width: auto;
+            }
+            .tit{
+                font-size: 30px;
+            }
+            .cnt{
+                margin: 10px 0 10px 0;
+                font-size: 13px;
+            }
+            .sign{
+                font-size: 20px;
+            }
+        }
+    }
+}

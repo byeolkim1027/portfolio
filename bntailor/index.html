@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="/design1/bntailor/js/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
+    <script src="/design1/bntailor/js/main.js"></script>
+    <script src="/design1/bntailor/js/common.js"></script>
+    <link rel="stylesheet" href="/design1/bntailor/css/main.css">
+    <!--html에서는 scss를 컴파일한 css를 호출해서 사용-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css">
+    <title>B&tailor</title>
+</head>
+<body>
+    <div id="wrap">
+        <header class="header">
+            <h1 class="logo">
+                <a href="/design1/bntailor/index.html">
+                    <!-- svg파일을 img테그가 아니라 svg코드로 삽입하는 방법
+                         1. svg파일을 코딩프로그램에서 열면 코드가 나타남
+                         2. <svg></svg>까지의 소스를 복사해서 html에서 삽일할 위치에 추가
+
+                         css에서 svg를 불러서 사이즈를 조절(주의사항! 넓이만 조절하면됨/높이조절X)
+                         1. svg안에 있는 text,path,polygon 등의 테그를 불러서 fill로 색상 변경
+                            -> 장점1. svg파일이 없어도 코드로 아이콘 표현 가능
+                               장점2. 크기와 색상을 원하는대로 변경 가능
+                            -> 단점2. 모든 브라우저에서 지원이 되지는않음
+                    -->
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 135 36">
+                        <text id="logo" transform="translate(0 29)" font-size="25" font-family="NotoSerifKR-Bold, Noto Serif KR" font-weight="700"><tspan x="0" y="0">B&amp;TAILOR</tspan></text>
+                    </svg>
+                </a>
+            </h1>
+            <!--모바일에서 메뉴를 열면 gnb에 mobile_open 클래스를 줄거임
+                gnb_open 은 버튼은 메뉴 바에서 -> X 애니메이션
+                gnb_wrap은 오른쪽에서 왼쪽으로 이동해서 나타남
+                gnb::after에 줄 검은색 배경은 서서히 나타남
+                ==> 애니메이션 들어갈 요소가 많음
+                    각자에 class를 추가하는게 아니라 모든요소를 감싸는 요소에 class 를 추가해서
+                    효과를 줌-->
+            <nav class="gnb">
+                <button class="gnb_open">
+                    <strong>메뉴열기</strong>
+                    <span class="line1"></span>
+                    <span class="line2"></span>
+                    <span class="line3"></span>
+                </button>
+                <div class="gnb_wrap"><!--모바일에서 메뉴열렸을때 뒤에 깔리는 배경-->
+                    <ul>
+                        <li><a href="/design1/bntailor/contents/about1.html">About Us</a></li>
+                        <li><a href="/design1/bntailor/contents/line.html">Line</a></li>
+                        <li><a href="/design1/bntailor/contents/artwork.html">Artwork</a></li>
+                        <li><a href="/design1/bntailor/contents/trunkshow.html">Trunkshow</a></li>
+                        <li><a href="/design1/bntailor/contents/contact.html">Contact</a></li>
+                        <li><a href="/design1/bntailor/contents/journal.html">Journal</a></li>
+                        <li><a href="/design1/bntailor/contents/notice.html">Stock notice</a></li>
+                        <li><a href="http://www.chadprom.com/" target="_blank" title="새창열림">Mall</a></li>
+                    </ul>
+                </div>
+            </nav>
+        </header>
+        <section class="visual">
+            <div class="tit">
+                <strong>아틀리에는 예술 작업을 진행하는 공간</strong>
+                <h2>B&TAILOR<br><!--모바일에서도 이부분은 두줄로 되어있어서 br로 줄바꿔줌-->
+                    FULL-HAND BESPOKE</h2>
+            </div>
+            <div class="popup swiper">
+                <ul class="swiper-wrapper">
+                    <li class="swiper-slide"><img src="/design1/bntailor/images/main/visual01.png" alt="손으로 테일링하는 사진"></li>
+                    <li class="swiper-slide"><img src="/design1/bntailor/images/main/visual02.png" alt="실 바늘 시계 향수병 사진"></li>
+                    <li class="swiper-slide"><img src="/design1/bntailor/images/main/visual03.png" alt="수염난 외국남자 사진"></li>
+                    <li class="swiper-slide"><img src="/design1/bntailor/images/main/visual04.png" alt="양복 사진"></li>
+                </ul>
+                <div class="btn_wrap">
+                    <div class="btn_paging"></div>
+                    <button class="btn_stop">일시정지</button><!--일시정지/재생 두가지 기능을 갖은 버튼-->
+                </div>
+            </div>
+        </section>
+        <section class="fabric">
+            <div class="wrapper">
+                <h2>이달의 원단</h2>
+                <p class="tit">드라고(Drago) 180수 그레이 헤링본<br class="m_no">
+                    코트원단 14.5 micron 180수 울"SKYFALL"</p>
+                <p class="cnt">캐시미어처럼 굉장히 부드럽고 포근하며, 따뜻하게 입을수 있는 두께감 방수까지 생각한 코트 감입니다. 보통 물기가 닿자마자 젖는게 울이거나 코트 원단 이렇게 물로 뿌려도 젖기 보다는 툭툭 털면 물기가 없어지는 원단입니다. 원단이 방수 관련된 폴리나 합성섬유나 나일론 이런 원단이 아닌기에 정확히 방수 원단이라기 보다는 워터프루프 기능이 있는 원단으로 봐주시면 좋을것 같습니다. 겨울에 눈오거나 비올때도 아주 좋을 원단임에 틀림없습니다.</p>
+                <p class="tag"><span>#비앤테일러</span><span>#bntailor</span><span>#bespoke</span><span>#fullhandmade</span></p>
+                <div class="bg"><img src="/design1/bntailor/images/main/fabric.png" alt="정장자켓 두개 사진"></div>
+                <div class="bg2"><img src="/design1/bntailor/images/main/fabric02.png" alt="미싱바늘 사진"></div>
+            </div>
+        </section>
+        <section class="product">
+            <div class="wrapper">
+                <h2>B&TAILOR READY TO WEAR</h2>
+                <div class="list">
+                    <!-- 고정일땐fixed, 나타나고 사라질때는 end 클래스 추가-->
+                    <div class="tit">비앤테일러는 다양한 서비스를<br class="m_no">
+                         제공하기 위해 R.T.W 레이블을<br class="m_no">
+                         런칭하였습니다.</div>
+                    <ul class="item1"><!--ul에 float;right를 주게되서 ul의 순서를 오른쪽왼쪽을 뒤바꿔서 재배치한다-->
+                        <li>
+                            <a href="#n">
+                                <div class="pic"><img src="/design1/bntailor/images/main/product04.png" alt=""></div>
+                                <h3>트라우저 TROUSER</h3>
+                                <p>비앤테일러 READY TO WEAR 트라우저는 편안함을 베이스로 군더더기 없는 실루엣을 연출하실 수 있습니다.</p>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#n">
+                                <div class="pic"><img src="/design1/bntailor/images/main/product05.png" alt=""></div>
+                                <h3>이지-웨어 EASY-WEAR</h3>
+                                <p>편안함을 기반으로 하지만 보다 갖춰입은 무드로 연출이 가능한 캐주얼 READY TO WEAR 입니다.</p>
+                            </a>
+                        </li>
+                    </ul>
+                    <ul class="item2">
+                        <li>
+                            <a href="#n">
+                                <div class="pic"><img src="/design1/bntailor/images/main/product01.png" alt=""></div>
+                                <h3>자켓 JACKET</h3>
+                                <p>비앤테일러 하우스 컷을 기반으로 하여 기성복의 단점을 최소화한 실루엣과 밸런스를 지니고 있습니다.</p>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#n">
+                                <div class="pic"><img src="/design1/bntailor/images/main/product02.png" alt=""></div>
+                                <h3>셔츠 SHIRT</h3>
+                                <p>드레스 셔츠와 캐주얼 셔츠를 구분하기 위해 다양한 디테일과 실루엣을 반영하였습니다. </p>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#n">
+                                <div class="pic"><img src="/design1/bntailor/images/main/product03.png" alt=""></div>
+                                <h3>액세서리 ACC</h3>
+                                <p>오랜시간 지속할 수 있는 퀄리티를 바탕으로 타이, 스카프, 슈즈 등 다양한 액세서리들을 선보입니다.</p>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        <section class="sns">
+            <div class="wrapper">
+                <h2>B&TAILOR INSTAGRAM</h2>
+                <div class="list swiper">
+                    <ul class="swiper-wrapper">
+                        <li class="swiper-slide"><a href="#n"><img src="/design1/bntailor/images/main/sns1.png" alt=""></a></li>
+                        <li class="swiper-slide"><a href="#n"><img src="/design1/bntailor/images/main/sns2.png" alt=""></a></li>
+                        <li class="swiper-slide"><a href="#n"><img src="/design1/bntailor/images/main/sns3.png" alt=""></a></li>
+                        <li class="swiper-slide"><a href="#n"><img src="/design1/bntailor/images/main/sns4.png" alt=""></a></li>
+                        <li class="swiper-slide"><a href="#n"><img src="/design1/bntailor/images/main/sns5.png" alt=""></a></li>
+                        <li class="swiper-slide"><a href="#n"><img src="/design1/bntailor/images/main/sns6.png" alt=""></a></li>
+                    </ul>
+                </div>
+                <div class="bg_txt">B&TAILOR READY TO WEAR STOCK UPDATE NEWS B&TAILOR READY TO WEAR STOCK UPDATE NEWS</div>
+            </div>
+        </section>
+        <footer class="footer">
+            <div class="wrapper">
+                <div class="social">
+                    <ul>
+                        <li class="insta"><a href="https://www.instagram.com/bntailor/" target="_blank" title="새창열림">instagram</a></li>
+                        <li class="face"><a href="https://www.facebook.com/bntailor" target="_blank" title="새창열림">facebook</a></li>
+                        <li class="naver"><a href="https://blog.naver.com/bntailor" target="_blank" title="새창열림">naverblog</a></li>
+                    </ul>
+                </div>
+                <div class="inner">
+                    <div class="f_info">
+                        <span>주식회사 비앤테일러샵</span>
+                        <span>대표자 박정열</span>
+                        <span>사업자 등록번호 101 86 69719</span><br>
+                        <span>B&TAILOR 31,Dosan-daero 81-gil, Gangnam-gu, Seoul, Republic of Korea</span><br>
+                        <span>bntailor@naver.com</span>
+                        <span>02-763-9997(8)</span>
+                    </div>
+                    <div class="copyright">© 2020 B&TAILOR</div>
+                </div>
+            </div>
+        </footer>
+    </div>
+</body>
+</html>

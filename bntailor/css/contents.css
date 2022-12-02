@@ -1,0 +1,158 @@
+@charset "UTF-8";
+/*기본글자색*/
+/* 제목에 들어가는 색*/
+/*기본회색*/
+/*밝은회색*/
+/*어두운 배경에 기본 흰글씨*/
+/* 어두운 배경에 흰글씨*/
+/*
+    scss에서 mixin 은 특정스타일의 속성명과 속성값을 모두 선언하는 방식(여러개)
+    변수는 특정 속성값 단 한개를 저장하는 방식(변수 1개 = 1개 속성값)
+    --> 변수의 값은 어느 속성에 사용하든 상관없음
+*/
+/* 각각의 컨텐츠 페이지 스타일 */
+/* Chairman > About Us > B&tailor */
+.cts_about1 {
+  margin: 48px 0 100px 0;
+}
+.cts_about1 .about_top {
+  overflow: hidden;
+  position: relative;
+  padding: 233px 0 0 0;
+}
+.cts_about1 .about_top p {
+  font-family: "Noto Serif KR", serif;
+  position: absolute;
+  top: 463px;
+  left: calc(50% - 700px);
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 30px;
+}
+.cts_about1 .about_top img {
+  position: absolute;
+  top: 0;
+  left: calc(50% + 243px);
+}
+.cts_about1 .about_top .bg {
+  height: 590px;
+  background: url(/design1/bntailor/images/contents/about_top_bg.png) no-repeat center center/cover;
+}
+.cts_about1 .about_sub {
+  position: relative;
+  z-index: 10;
+  padding: 60px 0 0 80px;
+  margin-top: -185px;
+  margin-left: calc(50% - 100px);
+  background-color: #fff;
+}
+.cts_about1 .about_sub .sub_wrap {
+  width: 713px;
+}
+.cts_about1 .about_sub .tit {
+  font-family: "Noto Serif KR", serif;
+  font-size: 40px;
+}
+.cts_about1 .about_sub .cnt {
+  margin: 20px 0 20px 0;
+  font-size: 20px;
+}
+.cts_about1 .about_sub .sign {
+  font-size: 30px;
+  text-align: right;
+}
+
+@media screen and (max-width: 1280px) {
+  .cts_about1 {
+    margin: 48px 0 100px 0;
+  }
+  .cts_about1 .about_top {
+    overflow: hidden;
+    position: relative;
+    padding: 150px 0 0 0;
+  }
+  .cts_about1 .about_top p {
+    font-family: "Noto Serif KR", serif;
+    position: absolute;
+    top: 400px;
+    left: calc(50% - 600px);
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 30px;
+  }
+  .cts_about1 .about_top img {
+    position: absolute;
+    top: 0;
+    left: calc(50% + 243px);
+  }
+  .cts_about1 .about_top .bg {
+    height: 590px;
+    background: url(/design1/bntailor/images/contents/about_top_bg.png) no-repeat center center/cover;
+  }
+  .cts_about1 .about_sub {
+    position: relative;
+    z-index: 10;
+    padding: 40px 0 0 60px;
+    margin-top: -185px;
+    margin-left: calc(50% - 20px);
+    background-color: #fff;
+  }
+  .cts_about1 .about_sub .sub_wrap {
+    width: 570px;
+  }
+  .cts_about1 .about_sub .tit {
+    font-size: 35px;
+  }
+  .cts_about1 .about_sub .cnt {
+    margin: 20px 0 20px 0;
+    font-size: 15px;
+  }
+  .cts_about1 .about_sub .sign {
+    font-size: 17px;
+  }
+}
+@media screen and (max-width: 640px) {
+  .cts_about1 {
+    margin: 48px 0 100px 0;
+  }
+  .cts_about1 .about_top {
+    padding: 40px 0 0 0;
+  }
+  .cts_about1 .about_top p {
+    /*컨텐츠를 위아래 가운데 정렬하고 브라우저 사이즈 늘고 줄었을때
+      오른쪽 글자와 왼쪽 이미지가 같이 움직일수있게 */
+    top: calc(50% + 10px);
+    transform: translateY(-50%);
+    left: 20px;
+    margin-right: 160px;
+    font-size: 15px;
+  }
+  .cts_about1 .about_top p .m_no {
+    display: none;
+  }
+  .cts_about1 .about_top img {
+    left: auto;
+    right: 0;
+    width: 152px;
+  }
+  .cts_about1 .about_top .bg {
+    height: 180px;
+  }
+  .cts_about1 .about_sub {
+    padding: 0;
+    margin-top: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+  .cts_about1 .about_sub .sub_wrap {
+    width: auto;
+  }
+  .cts_about1 .about_sub .tit {
+    font-size: 30px;
+  }
+  .cts_about1 .about_sub .cnt {
+    margin: 10px 0 10px 0;
+    font-size: 13px;
+  }
+  .cts_about1 .about_sub .sign {
+    font-size: 20px;
+  }
+}

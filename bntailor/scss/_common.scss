@@ -1,0 +1,371 @@
+/* 모든 페이지에 공통으로 들어간느 스타일 (header/footer) */
+
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;700&display=swap');
+html,body{
+    /*브라우저사이즈가 작아졌을때 배경이 안잘리게 하는테그,(가로스크롤이 생성되었을때 배경이 않잘리기위해*/
+    color: $basic_color;
+    line-height: 1.5;
+    /*폰트 적용 우선순위
+      만약에 웹폰트가 지원되지 않으면 그 다음에 선언된 폰트가 적용됨
+      apple sd gothic- 아이폰에서 지원하는 폰트*/
+    font-family: 'Noto Sans KR', 'NanumGothic', 'Malgun Gothic', 'Apple SD Gothic', 'Apple SD Gothic Neo', 'Dotum', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    /* letter-spacing: -0.05em; */ 
+    word-break: keep-all;/*단어별 줄바꿈*/
+}
+
+#wrap{/*id="wrap"*/
+    overflow: hidden;
+    /*header의 기준점이 되야 헤더가 정확한 위치에 배열이 된다
+      윈도우 사이즈가 줄어들었을때 스크린 크기에 따라 헤더가 따라오는게 아니라
+      1400이전으로 사이즈가 줄어들면 가로스크롤바가 생기면서 원래 위치인 제일 오른쪽에있는
+      컨텐츠가 그자리에 있는다*/
+    position: relative;
+    min-width: 350px;/*pc에서 부터 최소 넓이를 준다(그래야 320아래로 내려갓을때 가로스크롤이 생긴다)*/       
+}
+/*컨텐츠의 넓이를 제한하고 홈페이지를 브라우저 가운데에 배치*/
+.wrapper{
+    width: 100%;
+    max-width: 1440px;
+    padding: 0 20px;
+    margin: 0 auto;
+    /*1400px 이하부터 320px 까지 모든 사이즈 반응형
+      1400px 일때에도 좌우에 여백은 유지해야함(1400이상에서 1400px 이하로 변경되는 점 - 반응형으로 전환되는점)
+      부드럽게 여백을 유지하면서 전환해야함
+      원래 좌우에 여백이 20px씩 들어가 있는 걸로 스타일을 줌(모바일에서 처럼 20기본으로 좌우에)
+      1400px 컨텐츠 영역인데 왼쪽20 + 오른쪽20 = 1440px이 넓이 
+      padding으로 좌우에 여백을 20px씩 줌*/
+}
+
+@media screen and (max-width:1000px){
+    html,body{
+        font-size: 13px;
+    }
+}
+
+@media screen and (max-width:640px){
+    /*640px 이하의 디바이스에서만 아래 css가 적용된다*/
+    /*pc에서는 1280px 이라는 콘텐츠 고정넓이가 존재했지만
+      모바일에서는 디바이스 넓이에 맞춰서 꽉차게 구현
+      구현방식이 달라서 고정값을 모두 삭제*/
+    html,body{
+        /*모바일기기가 전부 달라서 고정된값을 풀어주고 내부요소가 존재하는 만큼*/
+        font-size: 13px;
+    }
+    .wrapper{
+        width: auto;
+        margin: 0;/*pc에서부터 패딩을 20 을줘서 모바일에서는 안줘도 된다*/
+    }
+}/*media 종료*/
+.clearfix::after{display:block;clear:both;content:".";visibility:hidden;height:0;}
+.clearfix{display:block;}
+
+/* wrapper와 동일한 사이즈를 가진 position:relative 를 요소는 cnt_wrap를 줘서 항상 부름*/
+.cnt_wrap{
+    position: relative;
+}
+
+.skip_nav{
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 1000000;/*제일높은 그무엇보다 제일많은값을준다*/
+    width: 100%;
+}
+.skip_nav a{
+    position: absolute;
+    left: 0;
+    top: -10000px;/*tap키로 이동할때만 보인다 그냥은 안보인다*/
+    width: 100%;
+    height: 40px;
+    line-height: 40px;
+    background-color: #0051A7;
+    color: #fff;
+    text-align: center;
+}
+.skip_nav a:focus{
+    top: 0;/*tap키로 이동할때만 보인다 그냥은 안보인다*/
+}
+
+/* 브라우저에서 글자를 드래그 했을때 드래그한 영역의 색과 글자색
+   -moz-, -webkit- 이 앞에 붙은 속성은 표준화 되지 않은 속성*/
+::selection{background: #6E4029;color: #fff;}
+::-moz-selection{background: #6E4029;color: #fff;}
+::-webkit-selection{background: #6E4029;color: #fff;}
+
+.header{
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 300;
+    width: 100%;/*영역에 맞게 꽉차게*/
+    height: 100px;
+    border-bottom: 1px solid rgba(255,255,255,0.2);
+    transition: 0.5s;//헤더에 fixed 클래스가 추가될때 부드럽게 추가되는값
+    .logo{
+        float: left;
+        margin: 28px 0 0 50px;
+        svg{
+            width: 135px;
+            text{
+                fill: #FFF;
+            }            
+        }
+    }
+    .gnb{
+        float: right;
+        margin: 0 27px 0 0;
+        .gnb_open{
+            display: none;
+        }
+        .gnb_wrap{
+            ul{
+                li{
+                    float: left;
+                    a{
+                        display: block;
+                        padding: 0 23px;
+                        color: $w_tit_color;
+                        font-size: 20px;
+                        line-height: 100px;/*header의 높이만큼 주면 글자가 헤더의 가운데 배치됨*/
+                    }
+                }
+            }
+        }
+    }
+    
+}
+@media screen and (max-width:1440px){
+    .header .logo a svg{
+        width: 120px;
+    }
+    .header .gnb .gnb_wrap ul li a{
+        font-size: 17px;
+    }
+}
+@media screen and (max-width:1200px){
+    .header .logo a svg{
+        width: 100px;
+    }
+    .header .gnb .gnb_wrap ul li a{
+        padding: 0 15px;
+        font-size: 15px;
+    }
+}
+@media screen and (max-width:1000px){
+    .header{
+        height: 60px;
+        .logo{
+            margin: 10px 0 0 20px;
+            a svg{
+                width: 91px;
+            }
+        }
+        .gnb{
+            margin: 0;
+            .gnb_open{
+                display: block;
+                position: relative;/*absolute로 span 을 준다음에 모바일 메뉴바를 만드는 기준점*/
+                z-index: 2;
+                width: 63px;
+                height: 60px;
+                strong{
+                    display: none;
+                }
+                span{
+                    position: absolute;
+                    right: 20px;
+                    /*top값은 다 달라서 따로 클래스 불러서 준다*/
+                    width: 23px;/*3줄중에서 많이 있는거*/
+                    height: 2px;
+                    background-color: #fff;/*back color는 변수명 쓰지않고 바로 값준다*/
+                    transition: 0.3s;
+                    &.line1{/* span.line1 과 동일한값(&를 꼭 붙혀서 써야함 scss 에서)*/
+                        top: 22px;
+                    }
+                    &.line2{
+                        top: 29px;
+                        width: 18px;
+                    }
+                    &.line3{
+                        top: 36px;
+                    }
+                }
+            }
+            .gnb_wrap{
+                display: block;
+                position: fixed;
+                right: -100%;
+                top: 0;
+                z-index: 1;
+                width: 100%;
+                max-width: 375px;
+                height: 100vh;
+                background-color: #fff;
+                color: #1d1d1d;
+                transition: right 0.5s;
+                ul{
+                    margin: 60px 0 0 0;
+                    li{
+                        float: none;
+                        border-bottom: 1px solid #f4f4f4;
+                        a{
+                            @include font_serif;
+                            padding: 0;
+                            color: $tit_color;
+                            font-size: 20px;
+                            line-height: 60px;/*header의 높이만큼 주면 글자가 헤더의 가운데 배치됨*/
+                            text-align: center;
+                        }
+                        &:first-child{
+                            border-top: 1px solid #f4f4f4;
+                        }
+                    }
+                }
+            }
+            &::after{
+                /*
+                    메뉴하단에 검은 배경을 채울때는 position:fixed; 값이 들어가야 전체 꽉차게 들어감
+
+                    화면에 꽉차는 배경은
+                    좌우 위아래 사방을 모두 0을주면
+                    width와 height를 100% 주는거와 동일
+
+                    <div class="gnb">
+                        <button class="gnb_open"></button>
+                        <div class="gnb_wrap"></div>
+                        ::after -- gnb::after
+                    </div>
+                    이런구조에서 
+                    gnb_open과 gnb_wrap, gnb::after 의 보여질 순서를 조정할수 있음
+                    --> z-index는 이렇게 나란히 들어간 요소들 사이에서 높은숫자가 위로 올라감
+
+                    <button class="gnb_open"></button>
+                    <div class="gnb_wrap">
+                        ::after -- gnb_wrap::after
+                    </div>
+                    이런구조라면 gnb_wrap::after 는 gnb_wrap안에 존재하기 때문에 
+                    그밖에 잇는 gnb_open,gnb_wrap과의 보여질 순서를 조절 불가능
+                */
+                display: none;
+                position: fixed;
+                opacity: 0;
+                transition: opacity 0.5s;
+                left: 0;
+                right: 0;
+                top: 0;
+                bottom: 0;
+                height: 100vh;
+                background-color: rgba(0,0,0,0.5);
+                content: "";
+            }
+            /*모바일 메뉴가 열렸을때*/
+            &.mobile_open{
+                .gnb_open{
+                    span{
+                        /*top값은 다 달라서 따로 클래스 불러서 준다*/
+                        background-color: #3d3d3d;/*back color는 변수명 쓰지않고 바로 값준다*/
+                        &.line1{/* span.line1 과 동일한값(&를 꼭 붙혀서 써야함 scss 에서)*/
+                            top: 30px;
+                            transform: rotate(33deg);
+                        }
+                        &.line2{
+                            right: -23px;
+                        }
+                        &.line3{
+                            top: 30px;
+                            transform: rotate(-33deg);
+                        }
+                    }
+                }
+                .gnb_wrap{
+                    right: 0;
+                }
+                &::after{
+                    display: block;
+                    opacity: 1;
+                }
+            }
+        }
+    }
+}
+/* header가 고정일때 */
+
+.footer{
+    @include font_serif;
+    @include clearfix;
+    padding: 70px 0 100px 0;
+    background-color: #000000;
+    color: $w_basic_color;
+    .social{
+        float: right;
+        ul{
+            li{
+                float: left;
+                a{
+                    position: relative;
+                    display: block;
+                    width: 49px;
+                    height: 49px;
+                    font-size: 0;
+                    line-height: 0;
+                    &::before{
+                        position: absolute;
+                        left: 50%;
+                        top: 50%;
+                        transform: translate(-50%,-50%);/*네모영역안에 가운데주는 값*/
+                        /*배경이미지가 한개를 보이는 영역을 제한해서 써야하기 때문에 
+                          before,after에서 표시
+                          이때 before,after의 사이즈는 내가 사용할 아이콘의 넓이
+                          - 저장할때 활용된 아이콘의 넓이*/
+                        width: 40px;
+                        height: 40px;
+                        background-image: url(/design1/bntailor/images/common/footer_ico.svg);
+                        background-repeat: no-repeat;
+                        content: "";
+                    }
+                }
+                &.insta a::before{
+                    background-position: left top;
+                }
+                &.face a::before{
+                    background-position: left -40px top;
+                }
+                &.naver a::before{
+                    background-position: left -80px top;
+                }
+            }//li 종료
+        }
+    }
+    .inner{
+        float: left;
+        span{
+            display: inline-block;
+            margin: 0 40px 20px 0;
+        }
+        .copyright{
+            color: $w_dark_light_color;
+            margin: 50px 0 0 0;
+        }
+    }
+}
+@media screen and (max-width:1000px){
+    .footer{
+        padding: 40px 0 65px 0;
+        .social{
+            @include clearfix;
+            float: none;
+        }
+        .inner{
+            margin: 20px 0 0 0;
+            span{
+                margin: 0 30px 10px 0;
+            }
+            .copyright{
+                margin: 40px 0 0 0;
+            }
+        }
+    }
+}

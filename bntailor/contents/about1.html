@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="/design1/bntailor/js/jquery-3.6.0.min.js"></script>
+    <script src="/design1/bntailor/js/sub.js"></script>
+    <script src="/design1/bntailor/js/common.js"></script>
+    <link rel="stylesheet" href="/design1/bntailor/css/sub.css">
+    <link rel="stylesheet" href="/design1/bntailor/css/contents.css">
+    <!--html에서는 scss를 컴파일한 css를 호출해서 사용-->
+    <title>Chairman > About Us > B&tailor</title>
+</head>
+<body>
+    <div id="wrap">
+        <header class="header">
+            <h1 class="logo">
+                <a href="/design1/bntailor/index.html">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 135 36">
+                        <text id="logo" transform="translate(0 29)" font-size="25" font-family="NotoSerifKR-Bold, Noto Serif KR" font-weight="700"><tspan x="0" y="0">B&amp;TAILOR</tspan></text>
+                    </svg>
+                </a>
+            </h1>
+            <!--모바일에서 메뉴를 열면 gnb에 mobile_open 클래스를 줄거임
+                gnb_open 은 버튼은 메뉴 바에서 -> X 애니메이션
+                gnb_wrap은 오른쪽에서 왼쪽으로 이동해서 나타남
+                gnb::after에 줄 검은색 배경은 서서히 나타남
+                ==> 애니메이션 들어갈 요소가 많음
+                    각자에 class를 추가하는게 아니라 모든요소를 감싸는 요소에 class 를 추가해서
+                    효과를 줌-->
+            <nav class="gnb">
+                <button class="gnb_open">
+                    <strong>메뉴열기</strong>
+                    <span class="line1"></span>
+                    <span class="line2"></span>
+                    <span class="line3"></span>
+                </button>
+                <div class="gnb_wrap"><!--모바일에서 메뉴열렸을때 뒤에 깔리는 배경-->
+                    <ul>
+                        <li><a href="/design1/bntailor/contents/about1.html">About Us</a></li>
+                        <li><a href="/design1/bntailor/contents/line.html">Line</a></li>
+                        <li><a href="/design1/bntailor/contents/artwork.html">Artwork</a></li>
+                        <li><a href="/design1/bntailor/contents/trunkshow.html">Trunkshow</a></li>
+                        <li><a href="/design1/bntailor/contents/contact.html">Contact</a></li>
+                        <li><a href="/design1/bntailor/contents/journal.html">Journal</a></li>
+                        <li><a href="/design1/bntailor/contents/notice.html">Stock notice</a></li>
+                        <li><a href="http://www.chadprom.com/" target="_blank" title="새창열림">Mall</a></li>
+                    </ul>
+                </div>
+            </nav>
+        </header>
+        <!--
+            각 1차메뉴마다 sub_visual 배경을 변경
+            about us - sub_bg1
+            line     - sub_bg2
+        -->
+        <div class="sub_visual sub_bg1">
+            <div class="wrapper">
+                <div class="location">
+                    <span>Home</span>
+                    <span>About Us</span>
+                    <span>Chairman</span>
+                </div>
+                <div class="tit">About Us</div>
+            </div>
+            <div class="sub_visual_bg"></div>
+            <div class="sub_visual_path">
+                <svg xmlns="http://www.w3.org/2000/svg">
+                    <clipPath id="sub_visual_path" clipPathUnits="objectBoundingBox" transform="scale(0.00078125,0.0013888888888889)">
+                        <path d="M-11627.829,2301.2l-209.671-94.485V1671.5h1921v499.854L-11627.83,2301.2Z" transform="translate(11837.5 -1671.501)"/>
+                    </clipPath>
+                </svg>
+            </div>
+            <!-- svg에 clipPath를 추가하면 svg는 화면에 출력되지 않습니다
+                 css에서 clip-path로 사용하기 위해서 변환한것
+                 svg가 눈에 보이지않을뿐 공간은 차지함
+
+                 display:none으로 숨기면 clip-path효과가 사라짐(적용이 안됨)
+                 absolute로 한쪽으로 치워두고 svg를 css로 불러와서 1px로 작게 수정
+            -->
+        </div>
+        <!--lnb를 고정할때는 lnb 전체를 fixed로 변경하면 안됨
+            lnb가 공간을 차지하지 않아서 하단의 컨텐츠가 따라 올라옴
+            (lnb 가 고정되는 순간 밑에 컨텐츠가 올라오는 현상이 나타남)
+            lnb는 그대로 있고 안에 일부 컨텐츠만 fixed로 고정되어야함
+        
+            lnb에 fixed 클래스가 추가되면 lnb_fix가 position: fixed; 로 고정-->
+        <nav class="lnb"><!-- local navigation bar 서브메뉴-->
+            <div class="lnb_fix"><!--상단에 fixed될 컨텐츠 영역-->
+                <div class="wrapper">
+                    <div class="lnb_wrap">
+                        <ul>
+                            <li class="active"><a href="#n">Chairman</a></li>
+                            <li><a href="#n">Family</a></li>
+                            <li><a href="#n">Our Business</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </nav>
+        <!-- 위쪽은 공통 서브메뉴 부분 -->
+        <div class="container"><!--컨텐츠 부분-->
+            <div class="contents">
+                <!-- 개별 컨텐츠 영역 :: START -->
+                <div class="cts_about1"><!-- 반드시 cts_파일명으로 class를 잡아주고 시작 -->
+                    <div class="about_top">
+                        <p>수십년간 집약된 노하우와 기술을<br class="m_no"> 
+                            토대로 고객에게 최상의 수트를 제공하고 있습니다.</p>
+                        <img src="/design1/bntailor/images/contents/about_top_ceo.png" alt="CEO 사진">
+                        <div class="bg"></div>
+                    </div>
+                    <div class="about_sub">
+                        <div class="sub_wrap">
+                            <p class="tit">SINCE 1967</p>
+                            <p class="cnt">비앤테일러 마스터 테일러이자 설립자인 박정열 대표는 1967년부터 업에 종사하기 시작
+                                하였으며 1980년 비앤테일러의 전신인 보령양복점에서 두 아들의 합류를 기점으로 현재
+                                의 B&TAILOR를 설립하였습니다. 대한민국 비스포크 하우스의 세계화를 이룬다는 오랜 
+                                인고의 결실을 맺어 현재 비앤테일러는 해외사업을 비롯 국내고객 못지않은 비중의 해외
+                                고객을 보유하고 있으며 파트너쉽을 바탕으로 해외 트렁크쇼를 개최하고 있습니다. 비앤
+                                테일러의 수트 한벌은 박정열 대표의 일평생을 바친 모든것을 투영하는 하나의 객체이자 
+                                예술작품입니다.</p>
+                            <p class="sign">마스터테일러 박정열</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- 개별 컨텐츠 영역 :: END -->
+            </div>
+        </div>
+        <footer class="footer">
+            <div class="wrapper">
+                <div class="social">
+                    <ul>
+                        <li class="insta"><a href="https://www.instagram.com/bntailor/" target="_blank" title="새창열림">instagram</a></li>
+                        <li class="face"><a href="https://www.facebook.com/bntailor" target="_blank" title="새창열림">facebook</a></li>
+                        <li class="naver"><a href="https://blog.naver.com/bntailor" target="_blank" title="새창열림">naverblog</a></li>
+                    </ul>
+                </div>
+                <div class="inner">
+                    <div class="f_info">
+                        <span>주식회사 비앤테일러샵</span>
+                        <span>대표자 박정열</span>
+                        <span>사업자 등록번호 101 86 69719</span><br>
+                        <span>B&TAILOR 31,Dosan-daero 81-gil, Gangnam-gu, Seoul, Republic of Korea</span><br>
+                        <span>bntailor@naver.com</span>
+                        <span>02-763-9997(8)</span>
+                    </div>
+                    <div class="copyright">© 2020 B&TAILOR</div>
+                </div>
+            </div>
+        </footer>
+    </div>
+</body>
+</html>

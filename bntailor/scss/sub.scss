@@ -1,0 +1,238 @@
+@import "_var.scss";
+@import "_default.scss";
+@import "_common.scss";
+
+.header.fixed{
+    position: fixed;
+    background-color: rgba(255,255,255,0.6);
+    .logo svg text{
+        fill: #1d1d1d;
+    }
+    .gnb .gnb_wrap ul li a{
+        color: #1d1d1d;
+    }
+    .gnb .gnb_open span{
+        background-color: #3d3d3d;
+    }
+}
+
+/* 서브 공통 레이아웃 */
+
+.sub_visual{
+    position: relative;
+    height: 640px;
+    .sub_visual_bg{
+        position: absolute;
+        left: 0;
+        top: 0;
+        z-index: -1;
+        width: 100%;
+        height: 710px;/*clip-path가 정확하지 않아 배경을 별도의 요소에 줌*/
+        background-image: url(/design1/bntailor/images/sub/sub_visual1.png);
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-size: cover;
+        clip-path: url(#sub_visual_path);
+        /*
+            html에서 입력한 svg clipPath 에 지정된 id 값을 연결하면 해당요소의 path값이 적용됨
+            배경이 표시될 영역으로 활용됨.
+            path로 직접 경로를 사용했는데 안되는 경우, svg path의 크기를 변경해야하는경우 
+            이런방식으로 사용
+        */    
+    }
+    &.sub_bg1 .sub_visual_bg{
+        background-image: url(/design1/bntailor/images/sub/sub_visual1.png);
+    }
+    &.sub_bg2 .sub_visual_bg{
+        background-image: url(/design1/bntailor/images/sub/sub_visual2.png);
+    }
+    &.sub_bg3 .sub_visual_bg{
+        background-image: url(/design1/bntailor/images/sub/sub_visual3.png);
+    }
+    &.sub_bg4 .sub_visual_bg{
+        background-image: url(/design1/bntailor/images/sub/sub_visual4.png);
+    }
+    &.sub_bg5 .sub_visual_bg{
+        background-image: url(/design1/bntailor/images/sub/sub_visual5.png);
+    }
+    &.sub_bg6 .sub_visual_bg{
+        background-image: url(/design1/bntailor/images/sub/sub_visual6.png);
+    }
+    &.sub_bg7 .sub_visual_bg{
+        background-image: url(/design1/bntailor/images/sub/sub_visual7.png);
+    }
+    .sub_visual_path{
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        svg{
+            width: 1px;
+            height: 1px;
+        }
+    }
+    .location{
+        display: flex;
+        padding: 365px 0 0 0;
+        color: $w_basic_color;
+        span{
+            position: relative;
+            margin-right: 20px;
+            &::after{
+                position: absolute;
+                right: -13px;
+                top: 11px;
+                width: 5px;
+                height: 7px;
+                background-color: rgba(255,255,255,0.6);
+                clip-path: polygon(22% 0%, 50% 0%, 85% 51.8%, 50.5% 99.5%, 22% 100%, 57.5% 50.3%);
+                /* 이미지로 하는것이 아니라 svg 를 이용해서 아이콘을 그리는데 ,여러번 반복해서 들어가는경우
+                css에서 원하는 도형의 크기와 넓이를 주고, 배경색으로 아이콘의 색상을 주고
+                clip-path: 로 path값을 줌
+                장점 - css로 여러요소를 선택해서 도형을 그릴수 있다
+                단점 - 사이즈를 수정이 불가함(단 % 로 path 그리는것은 가능)
+                     - 작은것은 적용안됨
+                     - 브라우저 호환성 떨어짐*/
+                content: "";
+            }
+            &:last-child::after{
+                display: none
+            }
+           
+        }
+
+    }
+    .tit{
+        @include font_serif;
+        color: $w_tit_color;
+        font-size: 70px;
+        line-height: 1.2;
+    }
+}
+@media screen and (max-width: 1000px){
+    .sub_visual{
+        height: 300px;
+        .sub_visual_bg{
+            height: 100%;/*clip-path가 정확하지 않아 배경을 별도의 요소에 줌*/
+            clip-path: none;
+            /*
+                클립패스 모바일에서는 안함
+            */    
+        }
+        .location{
+            padding: 180px 0 0 0;
+            span{
+                margin-right: 15px;
+                &::after{
+                    right: -9px;
+                    top: 8px;
+                    width: 3px;
+                    height: 5px;
+                }
+            }
+    
+        }
+        .tit{
+            font-size: 50px;
+        }
+    }
+}
+.lnb{
+    position: relative;
+    height: 100px;
+    .lnb_fix{
+        /*나중에 fixed로 변경될 컨텐츠 - absolute로 코딩한는게좋음*/
+        position: absolute;
+        left: 0;
+        top: 0;
+        z-index: 200;
+        width: 100%;//absolute는 inline요소로 변경되기때문에 넓이값을 줘야함
+        height: 100px;//lnb의 높이값과 같이 px로 준다 - %로 주면 fixed로 변경될때 화면에 꽉차서 안됨
+    }
+    &.fixed .lnb_fix{
+        position: fixed;
+        top: 100px;//header 높이만큼 아래
+        background-color: rgba(255,255,255,0.6);
+    }
+    .lnb_wrap{
+        overflow-x: auto; /* lnb_wrap의 넓이보다 ul의 넓이가 더 길어질때만 스크롤바가 생성*/
+        overflow-y: hidden;
+        margin: 40px 0 0 0;/*sub_visual과 lnb 사이에 떨어지는 마진값*/
+        ul{
+            white-space: nowrap;
+            /* 하위 요소들 줄바꿈 금지 - 블럭요소는 안됨, float 들어간 요소도 안됨.
+                inline 요소나 inline-block만 적용됨.
+                단, inline-block 요소의 사이사이에 space 한칸의 여백이 들어감
+                그럼 요소들 사이의 여백을 이를 감안해서 줄이면됨
+            */
+            li{
+                display: inline-block;
+                a{
+                    display: block;
+                    padding: 0 22px;
+                    font-size: 30px;
+                    color: #999;
+                }
+                &:first-child{
+                    a{
+                        padding-left: 0;
+                    }
+                }
+                &.active{
+                    a{
+                        position: relative;
+                        color: #1d1d1d;
+                        font-weight: 700;
+                        &::before{
+                            position: absolute;
+                            right: 24px;
+                            top: 2px;
+                            width: 6px;
+                            height: 6px;
+                            border-radius: 4px;
+                            background-color: #A39161;
+                            content: "";
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+@media screen and (max-width:1200px){
+    .lnb .lnb_wrap ul li a{
+        font-size: 25px;
+    }
+}
+@media screen and (max-width:1000px){
+    .lnb{
+        height: 40px;
+        .lnb_fix{
+            height: 40px;//lnb와 같은 높이값
+        }
+        &.fixed .lnb_fix{
+            top: 60px;// 총 lnb의 값이 100, 
+        }
+        .lnb_wrap{
+            margin: 10px 0 0 0;/*sub_visual과 lnb 사이에 떨어지는 마진값*/
+            ul{
+                li{
+                    display: inline-block;
+                    a{
+                        padding: 0 15px;
+                        font-size: 17px;
+                    }
+                    &.active{
+                        a{
+                            &::before{
+                                right: 14px;
+                                top: 3px;
+                                width: 3px;
+                                height: 3px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
