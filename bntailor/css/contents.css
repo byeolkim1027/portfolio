@@ -35,7 +35,7 @@
 }
 .cts_about1 .about_top .bg {
   height: 590px;
-  background: url(/design1/bntailor/images/contents/about_top_bg.png) no-repeat center center/cover;
+  background: url(../images/contents/about_top_bg.png) no-repeat center center/cover;
 }
 .cts_about1 .about_sub {
   position: relative;
@@ -85,7 +85,7 @@
   }
   .cts_about1 .about_top .bg {
     height: 590px;
-    background: url(/design1/bntailor/images/contents/about_top_bg.png) no-repeat center center/cover;
+    background: url(../images/contents/about_top_bg.png) no-repeat center center/cover;
   }
   .cts_about1 .about_sub {
     position: relative;

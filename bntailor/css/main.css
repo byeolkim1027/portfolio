@@ -1,44 +1,25 @@
 @charset "UTF-8";
-/*기본글자색*/
-/* 제목에 들어가는 색*/
-/*기본회색*/
-/*밝은회색*/
-/*어두운 배경에 기본 흰글씨*/
-/* 어두운 배경에 흰글씨*/
-/*
-    scss에서 mixin 은 특정스타일의 속성명과 속성값을 모두 선언하는 방식(여러개)
-    변수는 특정 속성값 단 한개를 저장하는 방식(변수 1개 = 1개 속성값)
-    --> 변수의 값은 어느 속성에 사용하든 상관없음
-*/
-/* 모든 테그의 스타일 초기화*/
-/*브라우저에서 기본으로 제공하는 모든여백을 빼주는 테그*/
 @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;400;700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;700&display=swap");
 body, header, footer, div, p, nav, section, h1, h2, h3, h4, h5, h6, button, a, ol, ul, li, address, strong, span, em, i, dl, dt, dd, form, fieldset, legend, input, textarea, select, table, caption, colgroup, col, thead, tbody, tfoot, tr, th, td {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
-  /*width/height and padding이 결합이 되면 사이즈가 늘어남, 이걸 막는 스타일
-    padding을 줘도 width/height 가 유지가됨*/
 }
 
-/*a테그에 브라우저가 주는 기본속성 초기화*/
 a {
   color: inherit;
   text-decoration: none;
 }
 
-/*브라우저에서 기울임을 주는것을 초기화*/
 em, address {
   font-style: normal;
 }
 
-/*항목앞에 동그라미 삭제*/
 ul, ol, li {
   list-style: none;
 }
 
-/* form 테그가 문자스타일을 상속받지 않아서 강제로 상속받게 하기 */
 form, input, select, textarea, button {
   color: inherit;
   font-family: inherit;
@@ -46,8 +27,6 @@ form, input, select, textarea, button {
   font-weight: inherit;
   line-height: inherit;
   letter-spacing: inherit;
-  /*서체를 상속받아야함- button 은 body에서 
-    적용한 서체를 상속받지 않음- form 관련테그는 모두다그럼*/
 }
 
 fieldset {
@@ -55,63 +34,43 @@ fieldset {
 }
 
 legend {
-  display: none; /* form 테그의 legend는 타이틀로 숨김처리 */
+  display: none;
 }
 
 button {
-  background-color: transparent; /*뒷배경이 투명하게*/
-  /*none 는 background 라고 줘야한다*/
-  /* background: none; */
+  background-color: transparent; 
   border: 0;
-  cursor: pointer; /*마우스오버시에 손바닥모양으로 바꿔줌*/
+  cursor: pointer;
 }
 
 table caption {
   display: none;
 }
 
-/*글자를 두껍게 하는 테그는 모두 일반 두께로 변형*/
 h1, h2, h3, h4, h5, h6, strong, th {
   font-weight: 400;
 }
 
-/* 모든 페이지에 공통으로 들어간느 스타일 (header/footer) */
 html, body {
-  /*브라우저사이즈가 작아졌을때 배경이 안잘리게 하는테그,(가로스크롤이 생성되었을때 배경이 않잘리기위해*/
   color: #3d3d3d;
   line-height: 1.5;
-  /*폰트 적용 우선순위
-    만약에 웹폰트가 지원되지 않으면 그 다음에 선언된 폰트가 적용됨
-    apple sd gothic- 아이폰에서 지원하는 폰트*/
   font-family: "Noto Sans KR", "NanumGothic", "Malgun Gothic", "Apple SD Gothic", "Apple SD Gothic Neo", "Dotum", sans-serif;
   font-size: 16px;
   font-weight: 400;
-  /* letter-spacing: -0.05em; */
-  word-break: keep-all; /*단어별 줄바꿈*/
+  word-break: keep-all;
 }
 
 #wrap { /*id="wrap"*/
   overflow: hidden;
-  /*header의 기준점이 되야 헤더가 정확한 위치에 배열이 된다
-    윈도우 사이즈가 줄어들었을때 스크린 크기에 따라 헤더가 따라오는게 아니라
-    1400이전으로 사이즈가 줄어들면 가로스크롤바가 생기면서 원래 위치인 제일 오른쪽에있는
-    컨텐츠가 그자리에 있는다*/
   position: relative;
-  min-width: 350px; /*pc에서 부터 최소 넓이를 준다(그래야 320아래로 내려갓을때 가로스크롤이 생긴다)*/
+  min-width: 350px;
 }
 
-/*컨텐츠의 넓이를 제한하고 홈페이지를 브라우저 가운데에 배치*/
 .wrapper {
   width: 100%;
   max-width: 1440px;
   padding: 0 20px;
   margin: 0 auto;
-  /*1400px 이하부터 320px 까지 모든 사이즈 반응형
-    1400px 일때에도 좌우에 여백은 유지해야함(1400이상에서 1400px 이하로 변경되는 점 - 반응형으로 전환되는점)
-    부드럽게 여백을 유지하면서 전환해야함
-    원래 좌우에 여백이 20px씩 들어가 있는 걸로 스타일을 줌(모바일에서 처럼 20기본으로 좌우에)
-    1400px 컨텐츠 영역인데 왼쪽20 + 오른쪽20 = 1440px이 넓이 
-    padding으로 좌우에 여백을 20px씩 줌*/
 }
 
 @media screen and (max-width: 1000px) {
@@ -120,19 +79,15 @@ html, body {
   }
 }
 @media screen and (max-width: 640px) {
-  /*640px 이하의 디바이스에서만 아래 css가 적용된다*/
-  /*pc에서는 1280px 이라는 콘텐츠 고정넓이가 존재했지만
-    모바일에서는 디바이스 넓이에 맞춰서 꽉차게 구현
-    구현방식이 달라서 고정값을 모두 삭제*/
   html, body {
-    /*모바일기기가 전부 달라서 고정된값을 풀어주고 내부요소가 존재하는 만큼*/
     font-size: 13px;
   }
   .wrapper {
     width: auto;
-    margin: 0; /*pc에서부터 패딩을 20 을줘서 모바일에서는 안줘도 된다*/
+    margin: 0;
   }
-} /*media 종료*/
+}
+
 .clearfix::after {
   display: block;
   clear: both;
@@ -145,7 +100,6 @@ html, body {
   display: block;
 }
 
-/* wrapper와 동일한 사이즈를 가진 position:relative 를 요소는 cnt_wrap를 줘서 항상 부름*/
 .cnt_wrap {
   position: relative;
 }
@@ -154,14 +108,14 @@ html, body {
   position: absolute;
   left: 0;
   top: 0;
-  z-index: 1000000; /*제일높은 그무엇보다 제일많은값을준다*/
+  z-index: 1000000;
   width: 100%;
 }
 
 .skip_nav a {
   position: absolute;
   left: 0;
-  top: -10000px; /*tap키로 이동할때만 보인다 그냥은 안보인다*/
+  top: -10000px;
   width: 100%;
   height: 40px;
   line-height: 40px;
@@ -171,11 +125,9 @@ html, body {
 }
 
 .skip_nav a:focus {
-  top: 0; /*tap키로 이동할때만 보인다 그냥은 안보인다*/
+  top: 0;
 }
 
-/* 브라우저에서 글자를 드래그 했을때 드래그한 영역의 색과 글자색
-   -moz-, -webkit- 이 앞에 붙은 속성은 표준화 되지 않은 속성*/
 ::-moz-selection {
   background: #6E4029;
   color: #fff;
@@ -200,7 +152,7 @@ html, body {
   left: 0;
   top: 0;
   z-index: 300;
-  width: 100%; /*영역에 맞게 꽉차게*/
+  width: 100%;
   height: 100px;
   border-bottom: 1px solid rgba(255, 255, 255, 0.2);
   transition: 0.5s;
@@ -230,7 +182,7 @@ html, body {
   padding: 0 23px;
   color: #ffffff;
   font-size: 20px;
-  line-height: 100px; /*header의 높이만큼 주면 글자가 헤더의 가운데 배치됨*/
+  line-height: 100px;
 }
 
 @media screen and (max-width: 1440px) {
@@ -262,11 +214,11 @@ html, body {
   }
   .header .gnb {
     margin: 0;
-    /*모바일 메뉴가 열렸을때*/
+    /* when mobile menu open */
   }
   .header .gnb .gnb_open {
     display: block;
-    position: relative; /*absolute로 span 을 준다음에 모바일 메뉴바를 만드는 기준점*/
+    position: relative;
     z-index: 2;
     width: 63px;
     height: 60px;
@@ -277,13 +229,12 @@ html, body {
   .header .gnb .gnb_open span {
     position: absolute;
     right: 20px;
-    /*top값은 다 달라서 따로 클래스 불러서 준다*/
-    width: 23px; /*3줄중에서 많이 있는거*/
+    width: 23px;
     height: 2px;
-    background-color: #fff; /*back color는 변수명 쓰지않고 바로 값준다*/
+    background-color: #fff;
     transition: 0.3s;
   }
-  .header .gnb .gnb_open span.line1 { /* span.line1 과 동일한값(&를 꼭 붙혀서 써야함 scss 에서)*/
+  .header .gnb .gnb_open span.line1 {
     top: 22px;
   }
   .header .gnb .gnb_open span.line2 {
@@ -318,36 +269,13 @@ html, body {
     padding: 0;
     color: #1d1d1d;
     font-size: 20px;
-    line-height: 60px; /*header의 높이만큼 주면 글자가 헤더의 가운데 배치됨*/
+    line-height: 60px;
     text-align: center;
   }
   .header .gnb .gnb_wrap ul li:first-child {
     border-top: 1px solid #f4f4f4;
   }
   .header .gnb::after {
-    /*
-        메뉴하단에 검은 배경을 채울때는 position:fixed; 값이 들어가야 전체 꽉차게 들어감
-
-        화면에 꽉차는 배경은
-        좌우 위아래 사방을 모두 0을주면
-        width와 height를 100% 주는거와 동일
-
-        <div class="gnb">
-            <button class="gnb_open"></button>
-            <div class="gnb_wrap"></div>
-            ::after -- gnb::after
-        </div>
-        이런구조에서 
-        gnb_open과 gnb_wrap, gnb::after 의 보여질 순서를 조정할수 있음
-        --> z-index는 이렇게 나란히 들어간 요소들 사이에서 높은숫자가 위로 올라감
-
-        <button class="gnb_open"></button>
-        <div class="gnb_wrap">
-            ::after -- gnb_wrap::after
-        </div>
-        이런구조라면 gnb_wrap::after 는 gnb_wrap안에 존재하기 때문에 
-        그밖에 잇는 gnb_open,gnb_wrap과의 보여질 순서를 조절 불가능
-    */
     display: none;
     position: fixed;
     opacity: 0;
@@ -361,10 +289,9 @@ html, body {
     content: "";
   }
   .header .gnb.mobile_open .gnb_open span {
-    /*top값은 다 달라서 따로 클래스 불러서 준다*/
-    background-color: #3d3d3d; /*back color는 변수명 쓰지않고 바로 값준다*/
+    background-color: #3d3d3d;
   }
-  .header .gnb.mobile_open .gnb_open span.line1 { /* span.line1 과 동일한값(&를 꼭 붙혀서 써야함 scss 에서)*/
+  .header .gnb.mobile_open .gnb_open span.line1 {
     top: 30px;
     transform: rotate(33deg);
   }
@@ -383,7 +310,7 @@ html, body {
     opacity: 1;
   }
 }
-/* header가 고정일때 */
+
 .footer {
   font-family: "Noto Serif KR", serif;
   display: block;
@@ -416,14 +343,10 @@ html, body {
   position: absolute;
   left: 50%;
   top: 50%;
-  transform: translate(-50%, -50%); /*네모영역안에 가운데주는 값*/
-  /*배경이미지가 한개를 보이는 영역을 제한해서 써야하기 때문에 
-    before,after에서 표시
-    이때 before,after의 사이즈는 내가 사용할 아이콘의 넓이
-    - 저장할때 활용된 아이콘의 넓이*/
+  transform: translate(-50%, -50%);
   width: 40px;
   height: 40px;
-  background-image: url(/design1/bntailor/images/common/footer_ico.svg);
+  background-image: url(../images/common/footer_ico.svg);
   background-repeat: no-repeat;
   content: "";
 }
@@ -481,22 +404,16 @@ html, body {
   border-bottom: none;
 }
 
-/*
-    scss 내에서 import할 default와 common 등의 파일은 
-    파일명 앞에 _(언더바)를 입력하면 sass 컴파일러가 해당 파일은 컴파일 하지않음
-    main.css나 sub.css 에서 deafult,common 을 필요에 따라서 import 해서 사용하면 됨
-*/
 .visual {
   position: relative;
 }
 .visual .tit {
   position: absolute;
   left: calc(50% - 700px);
-  /*컨텐츠영역 왼쪽에맞게 글자가 배치된다(글자가 가운데 배치되면 그냥 50%만주면됨)*/
   top: 50%;
   z-index: 10;
   color: #ffffff;
-  transform: translate(0, -50%); /*컨텐츠 영역 위아래 가운데 배치*/
+  transform: translate(0, -50%);
 }
 .visual .tit strong {
   display: block;
@@ -505,20 +422,16 @@ html, body {
 }
 .visual .tit h2 {
   font-family: "Noto Serif KR", serif;
-  /* mixin으로 선언한 font_serif스타일을 불러오는 명령
-     @mixin font_serif로 선언된 스타일이 그대로 이안에 들어오는것
-     단, 무조건 @minxin 이 @include 보다 먼저 선언되어 있어야함*/
   font-size: 60px;
   line-height: 1.2;
 }
-.visual .popup { /* .visual .popup */
+.visual .popup {
   height: 100vh;
 }
 .visual .popup ul li {
-  /*현재 나타나는 팝업에 swiper가 주는 class명*/
+
 }
 .visual .popup ul li img {
-  /*이미지를 최대한 리사이즈에 맞게 주는 값(브라우저 늘고 줄었을때 이미지가 그거에맞게 가운데 포커스 맞게)*/
   display: block;
   width: 100%;
   height: 100%;
@@ -535,18 +448,13 @@ html, body {
   align-items: center;
   position: absolute;
   left: calc(50% - 700px);
-  /*.visual .tit 과 같은값을 줌*/
-  top: calc(50% + 150px); /*글자 맨꼭대기부터 버튼이있는곳까지*/
+  top: calc(50% + 150px);
   z-index: 10;
 }
 .visual .popup .btn_wrap .btn_paging {
-  /*.btn_paging 테그도 span 테그로 글자요소로 인지해서 여백이 안맞는다
-     그래서 행간, 글자크기를 0을줘서 여백을 맞춘다*/
   font-size: 0;
   line-height: 0;
   display: flex;
-  /* span이 여러개 발생해도 한줄로 나타남(페이징 갯수가아래로 떠러지지않음)
-      단, 내가 준 넓이보다 작게 구현될수 있음 */
 }
 .visual .popup .btn_wrap .btn_paging span {
   opacity: 0.4;
@@ -555,11 +463,6 @@ html, body {
   margin: 0 10px 0 0;
   background-color: #fff;
   border-radius: 0;
-  /* li:last-child 의 경우 아래와 같이 "&"로 표기
-      li{
-          &:last-child{ }
-      }
-  */
 }
 .visual .popup .btn_wrap .btn_paging span.swiper-pagination-bullet-active {
   opacity: 1;
@@ -567,25 +470,22 @@ html, body {
 .visual .popup .btn_wrap .btn_stop {
   width: 7px;
   height: 5px;
-  /*절대경로 url 연결해야함*/
-  background-image: url(/design1/bntailor/images/main/visual_button_stop.svg);
+  background-image: url(../images/main/visual_button_stop.svg);
   background-position: center center;
   background-repeat: no-repeat;
   font-size: 0;
   line-height: 0;
 }
-.visual .popup .btn_wrap .btn_stop.play { /* btn_stop.play -> &.play 로 표기(scss 에서)*/
-  background-image: url(/design1/bntailor/images/main/visual_button_play.svg);
+.visual .popup .btn_wrap .btn_stop.play {
+  background-image: url(../images/main/visual_button_play.svg);
 }
 
 @media screen and (max-width: 1440px) {
   .visual .tit {
     left: 20px;
-    /*wrapper 1440(양쪽여백 20씩)*/
   }
   .visual .popup .btn_wrap {
     left: 20px;
-    /*.visual .tit 과 같은값을 줌*/
   }
 }
 @media screen and (max-width: 1000px) {
@@ -599,10 +499,8 @@ html, body {
 @media screen and (max-width: 640px) {
   .visual .tit {
     left: 50%;
-    /*calc(50% - 20px); -> pc버전과 같이 왼쪽 정렬값*/
-    width: calc(100% - 40px); /*tit안에있는 글자컨텐츠들이 브라우저사이즈가 줄어들면 글자줄수가 바뀌는거 방지*/
-    /*모바일상태일때만 width값을 준다*/
-    transform: translate(-50%, -50%); /*정렬값 즉 left값이 변경되어서 transform 값도 -50% 로 바꿔줘야한다 동일하다면 그대로 둔다*/
+    width: calc(100% - 40px);
+    transform: translate(-50%, -50%);
     text-align: center;
   }
   .visual .tit strong {
@@ -612,12 +510,9 @@ html, body {
     font-size: 40px;
     line-height: 1.1;
   }
-  .visual .popup { /* .visual .popup */
-    /*height 이 300 or 400px 로 고정이라면 그값을 주면된다*/
-  }
   .visual .popup .btn_wrap {
-    left: 50%; /*.visual .tit 과 같은값을 줌*/
-    top: calc(50% + 100px); /*글자 맨꼭대기부터 버튼이있는곳까지*/
+    left: 50%; 
+    top: calc(50% + 100px);
     transform: translate(-50%, 0);
   }
   .visual .popup .btn_wrap .btn_paging span {
@@ -629,7 +524,7 @@ html, body {
   }
 }
 .fabric {
-  position: relative; /*이미지가 엡솔루트로 fabric 중심으로 들어갈거라서 기준점을 여기에 둔다*/
+  position: relative;
   padding: 0 0 240px 0;
   background-color: #433930;
   color: rgba(255, 255, 255, 0.8);
@@ -663,19 +558,16 @@ html, body {
   color: #9D856D;
 }
 .fabric .tag span {
-  display: inline-block; /*인라인블록을 줘야 좌우 여백이 잘들어감(span이 인라인요소라서)특히 위아래 여백은더필요*/
+  display: inline-block;
   margin: 0 20px 0 0;
 }
 .fabric .bg {
   position: absolute;
   z-index: 1;
   overflow: hidden;
-  /*bg 영역안에는 bg보다 더 큰 이미지가 포함됨,
-    이미지는 스크롤에 따라 bg영역 안에서 이동
-    그래서 overflow:hidden -> 영역밖에 나간이미지는 안보이게함*/
   left: calc(50% - 100px);
   top: 79px;
-  width: 800px; /*pc버전에서 디자인한 가로세로 값주면됨*/
+  width: 800px;
   height: 800px;
 }
 .fabric .bg img {
@@ -683,18 +575,15 @@ html, body {
   width: 120%;
   height: 120%;
   -o-object-fit: cover;
-     object-fit: cover; /*이미지 사진이 찌그러지지않고 제대로 들어가게하는값*/
+     object-fit: cover;
 }
 .fabric .bg2 {
   position: absolute;
   z-index: 1;
   overflow: hidden;
-  /*bg 영역안에는 bg보다 더 큰 이미지가 포함됨,
-    이미지는 스크롤에 따라 bg영역 안에서 이동
-    그래서 overflow:hidden -> 영역밖에 나간이미지는 안보이게함*/
   left: calc(50% + 600px);
   top: 560px;
-  width: 309px; /*pc버전에서 디자인한 가로세로 값주면됨*/
+  width: 309px;
   height: 306px;
 }
 .fabric .bg2 img {
@@ -702,7 +591,7 @@ html, body {
   width: 100%;
   height: 100%;
   -o-object-fit: cover;
-     object-fit: cover; /**/
+     object-fit: cover; 
 }
 
 @media screen and (max-width: 1440px) {
@@ -725,9 +614,6 @@ html, body {
     position: absolute;
     z-index: 1;
     overflow: hidden;
-    /*bg 영역안에는 bg보다 더 큰 이미지가 포함됨,
-      이미지는 스크롤에 따라 bg영역 안에서 이동
-      그래서 overflow:hidden -> 영역밖에 나간이미지는 안보이게함*/
     left: calc(50% - 50px);
     top: 79px;
     height: 720px;
@@ -783,24 +669,21 @@ html, body {
   .fabric .bg {
     position: relative;
     overflow: hidden;
-    /*bg 영역안에는 bg보다 더 큰 이미지가 포함됨,
-      이미지는 스크롤에 따라 bg영역 안에서 이동
-      그래서 overflow:hidden -> 영역밖에 나간이미지는 안보이게함*/
     left: auto;
     top: auto;
-    width: auto; /*영역에 맞게*/
+    width: auto;
     height: 320px;
   }
   .fabric .bg img {
-    transform: translateY(0) !important; /*모바일에서 애니메이션 없애는값*/
+    transform: translateY(0) !important; /* when its mobile version, remove animation */
     width: 150%;
     height: 150%;
     -o-object-fit: cover;
-       object-fit: cover; /*이미지 사진이 찌그러지지않고 제대로 들어가게하는값*/
+       object-fit: cover;
   }
 }
 .product {
-  background-image: url(/design1/bntailor/images/main/product.png);
+  background-image: url(../images/main/product.png);
   padding: 0 0 109px 0;
   color: rgba(255, 255, 255, 0.8);
 }
@@ -823,22 +706,6 @@ html, body {
   height: 0;
 }
 .product .list .tit {
-  /*
-      position:sticky는 감싸는 요소에 overflow:hidden 이 없어야 한다
-      하지만 홈페이지 전체를 감싸는 id=wrap 이 스타일에 overflow:hidden이 기본으로 들어감
-      overflow 를 주지않고 코딩자체가 어려움 그래서 sticky는 사용불가
-
-      고정될 요소에 고정될때는 position:fixed를 줘야함
-      fixed는 body와만 정렬함
-      <div class="list">          -- relative
-        <div class="tit"></div>   -- absolute
-      </div>
-      tit 이 absolute 일때는 relative를 준 list를 기준으로 정렬함.
-      하지만 fixed로 변경되면 무조건 body랑 정렬
-      정렬의 기분값이 변경됨...(left가 fixed일때랑 absolute일때랑 바뀜)
-      실제 화면상에서도 left의 위치는 변경 X
-      absolute일때와 fixed일때 위치를 동일하게 left값을 줘야함.
-  */
   position: absolute;
   left: calc(50% - 700px);
   top: 0;
@@ -875,7 +742,7 @@ html, body {
      object-fit: cover;
 }
 .product .list ul li a h3 {
-  margin-top: -25px; /*유일하게 마이너스가 된다(글자위로 겹쳐져서 올라간다)*/
+  margin-top: -25px; /* overlap the letter to picture */
   color: #ffffff;
   font-size: 40px;
   font-weight: 700;
@@ -951,7 +818,7 @@ html, body {
     font-size: 35px;
   }
   .product .list .tit {
-    position: relative; /*엡솔루트해제*/
+    position: relative;
     left: auto;
     top: auto;
     margin: 0 0 40px 0;
@@ -972,7 +839,7 @@ html, body {
     height: 148px;
   }
   .product .list ul li a h3 {
-    margin-top: -15px; /*유일하게 마이너스가 된다(글자위로 겹쳐져서 올라간다)*/
+    margin-top: -15px;
     font-size: 25px;
     line-height: 1;
   }
@@ -1016,13 +883,12 @@ html, body {
 }
 .sns .list ul li {
   width: 360px;
-  /*li(a) 와 img 사이의 여백을 빼줘야함*/
   font-size: 0;
   line-height: 0;
 }
 .sns .list ul li a {
   display: block;
-  overflow: hidden; /*내가준 border-raidus 만큼만 보이고 나머지는 잘려서 안보이게*/
+  overflow: hidden;
   border-radius: 20px;
 }
 .sns .list ul li a img {
@@ -1044,7 +910,7 @@ html, body {
   bottom: 110px;
   color: rgba(255, 255, 255, 0.1);
   font-size: 150px;
-  white-space: nowrap; /*줄바꿈 금지*/
+  white-space: nowrap;
   -webkit-animation-name: bg_txt_ani;
           animation-name: bg_txt_ani;
   -webkit-animation-duration: 45s;
@@ -1058,25 +924,19 @@ html, body {
 @-webkit-keyframes bg_txt_ani {
   0% {
     transform: translateX(0);
-  } /* 애니메이션을 시작할때의 속성 */
+  }
   100% {
     transform: translateX(-50.3%);
-  } /* 애니메이션이 종료될때의 속성 */
-  /* 무조건 html 에서 글자를 동일한 글자를 두번 입력(중요! 무조건 두번 입력해야함)
-      css 애니메이션으로 절반을 이동
-      그럼 두번째 단락의 글자가 다시 나타남*/
+  }
 }
 
 @keyframes bg_txt_ani {
   0% {
     transform: translateX(0);
-  } /* 애니메이션을 시작할때의 속성 */
+  }
   100% {
     transform: translateX(-50.3%);
-  } /* 애니메이션이 종료될때의 속성 */
-  /* 무조건 html 에서 글자를 동일한 글자를 두번 입력(중요! 무조건 두번 입력해야함)
-      css 애니메이션으로 절반을 이동
-      그럼 두번째 단락의 글자가 다시 나타남*/
+  }
 }
 @media screen and (min-width: 1441px) {
   .sns .list {
