@@ -1,44 +1,25 @@
 @charset "UTF-8";
-/*기본글자색*/
-/* 제목에 들어가는 색*/
-/*기본회색*/
-/*밝은회색*/
-/*어두운 배경에 기본 흰글씨*/
-/* 어두운 배경에 흰글씨*/
-/*
-    scss에서 mixin 은 특정스타일의 속성명과 속성값을 모두 선언하는 방식(여러개)
-    변수는 특정 속성값 단 한개를 저장하는 방식(변수 1개 = 1개 속성값)
-    --> 변수의 값은 어느 속성에 사용하든 상관없음
-*/
-/* 모든 테그의 스타일 초기화*/
-/*브라우저에서 기본으로 제공하는 모든여백을 빼주는 테그*/
 @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;400;700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;700&display=swap");
 body, header, footer, div, p, nav, section, h1, h2, h3, h4, h5, h6, button, a, ol, ul, li, address, strong, span, em, i, dl, dt, dd, form, fieldset, legend, input, textarea, select, table, caption, colgroup, col, thead, tbody, tfoot, tr, th, td {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
-  /*width/height and padding이 결합이 되면 사이즈가 늘어남, 이걸 막는 스타일
-    padding을 줘도 width/height 가 유지가됨*/
 }
 
-/*a테그에 브라우저가 주는 기본속성 초기화*/
 a {
   color: inherit;
   text-decoration: none;
 }
 
-/*브라우저에서 기울임을 주는것을 초기화*/
 em, address {
   font-style: normal;
 }
 
-/*항목앞에 동그라미 삭제*/
 ul, ol, li {
   list-style: none;
 }
 
-/* form 테그가 문자스타일을 상속받지 않아서 강제로 상속받게 하기 */
 form, input, select, textarea, button {
   color: inherit;
   font-family: inherit;
@@ -46,8 +27,6 @@ form, input, select, textarea, button {
   font-weight: inherit;
   line-height: inherit;
   letter-spacing: inherit;
-  /*서체를 상속받아야함- button 은 body에서 
-    적용한 서체를 상속받지 않음- form 관련테그는 모두다그럼*/
 }
 
 fieldset {
@@ -55,63 +34,44 @@ fieldset {
 }
 
 legend {
-  display: none; /* form 테그의 legend는 타이틀로 숨김처리 */
+  display: none;
 }
 
 button {
-  background-color: transparent; /*뒷배경이 투명하게*/
-  /*none 는 background 라고 줘야한다*/
-  /* background: none; */
+  background-color: transparent; 
   border: 0;
-  cursor: pointer; /*마우스오버시에 손바닥모양으로 바꿔줌*/
+  cursor: pointer; 
 }
 
 table caption {
   display: none;
 }
 
-/*글자를 두껍게 하는 테그는 모두 일반 두께로 변형*/
 h1, h2, h3, h4, h5, h6, strong, th {
   font-weight: 400;
 }
 
-/* 모든 페이지에 공통으로 들어간느 스타일 (header/footer) */
 html, body {
-  /*브라우저사이즈가 작아졌을때 배경이 안잘리게 하는테그,(가로스크롤이 생성되었을때 배경이 않잘리기위해*/
   color: #3d3d3d;
   line-height: 1.5;
-  /*폰트 적용 우선순위
-    만약에 웹폰트가 지원되지 않으면 그 다음에 선언된 폰트가 적용됨
-    apple sd gothic- 아이폰에서 지원하는 폰트*/
   font-family: "Noto Sans KR", "NanumGothic", "Malgun Gothic", "Apple SD Gothic", "Apple SD Gothic Neo", "Dotum", sans-serif;
   font-size: 16px;
   font-weight: 400;
-  /* letter-spacing: -0.05em; */
-  word-break: keep-all; /*단어별 줄바꿈*/
+  word-break: keep-all;
 }
 
 #wrap { /*id="wrap"*/
   overflow: hidden;
-  /*header의 기준점이 되야 헤더가 정확한 위치에 배열이 된다
-    윈도우 사이즈가 줄어들었을때 스크린 크기에 따라 헤더가 따라오는게 아니라
-    1400이전으로 사이즈가 줄어들면 가로스크롤바가 생기면서 원래 위치인 제일 오른쪽에있는
-    컨텐츠가 그자리에 있는다*/
   position: relative;
-  min-width: 350px; /*pc에서 부터 최소 넓이를 준다(그래야 320아래로 내려갓을때 가로스크롤이 생긴다)*/
+  min-width: 350px; 
 }
 
-/*컨텐츠의 넓이를 제한하고 홈페이지를 브라우저 가운데에 배치*/
+
 .wrapper {
   width: 100%;
   max-width: 1440px;
   padding: 0 20px;
   margin: 0 auto;
-  /*1400px 이하부터 320px 까지 모든 사이즈 반응형
-    1400px 일때에도 좌우에 여백은 유지해야함(1400이상에서 1400px 이하로 변경되는 점 - 반응형으로 전환되는점)
-    부드럽게 여백을 유지하면서 전환해야함
-    원래 좌우에 여백이 20px씩 들어가 있는 걸로 스타일을 줌(모바일에서 처럼 20기본으로 좌우에)
-    1400px 컨텐츠 영역인데 왼쪽20 + 오른쪽20 = 1440px이 넓이 
-    padding으로 좌우에 여백을 20px씩 줌*/
 }
 
 @media screen and (max-width: 1000px) {
@@ -120,19 +80,14 @@ html, body {
   }
 }
 @media screen and (max-width: 640px) {
-  /*640px 이하의 디바이스에서만 아래 css가 적용된다*/
-  /*pc에서는 1280px 이라는 콘텐츠 고정넓이가 존재했지만
-    모바일에서는 디바이스 넓이에 맞춰서 꽉차게 구현
-    구현방식이 달라서 고정값을 모두 삭제*/
   html, body {
-    /*모바일기기가 전부 달라서 고정된값을 풀어주고 내부요소가 존재하는 만큼*/
     font-size: 13px;
   }
   .wrapper {
     width: auto;
-    margin: 0; /*pc에서부터 패딩을 20 을줘서 모바일에서는 안줘도 된다*/
+    margin: 0;
   }
-} /*media 종료*/
+}
 .clearfix::after {
   display: block;
   clear: both;
@@ -145,7 +100,6 @@ html, body {
   display: block;
 }
 
-/* wrapper와 동일한 사이즈를 가진 position:relative 를 요소는 cnt_wrap를 줘서 항상 부름*/
 .cnt_wrap {
   position: relative;
 }
@@ -154,14 +108,14 @@ html, body {
   position: absolute;
   left: 0;
   top: 0;
-  z-index: 1000000; /*제일높은 그무엇보다 제일많은값을준다*/
+  z-index: 1000000;
   width: 100%;
 }
 
 .skip_nav a {
   position: absolute;
   left: 0;
-  top: -10000px; /*tap키로 이동할때만 보인다 그냥은 안보인다*/
+  top: -10000px;
   width: 100%;
   height: 40px;
   line-height: 40px;
@@ -171,11 +125,9 @@ html, body {
 }
 
 .skip_nav a:focus {
-  top: 0; /*tap키로 이동할때만 보인다 그냥은 안보인다*/
+  top: 0; 
 }
 
-/* 브라우저에서 글자를 드래그 했을때 드래그한 영역의 색과 글자색
-   -moz-, -webkit- 이 앞에 붙은 속성은 표준화 되지 않은 속성*/
 ::-moz-selection {
   background: #6E4029;
   color: #fff;
@@ -200,7 +152,7 @@ html, body {
   left: 0;
   top: 0;
   z-index: 300;
-  width: 100%; /*영역에 맞게 꽉차게*/
+  width: 100%; 
   height: 100px;
   border-bottom: 1px solid rgba(255, 255, 255, 0.2);
   transition: 0.5s;
@@ -230,7 +182,7 @@ html, body {
   padding: 0 23px;
   color: #ffffff;
   font-size: 20px;
-  line-height: 100px; /*header의 높이만큼 주면 글자가 헤더의 가운데 배치됨*/
+  line-height: 100px;
 }
 
 @media screen and (max-width: 1440px) {
@@ -262,11 +214,10 @@ html, body {
   }
   .header .gnb {
     margin: 0;
-    /*모바일 메뉴가 열렸을때*/
   }
   .header .gnb .gnb_open {
     display: block;
-    position: relative; /*absolute로 span 을 준다음에 모바일 메뉴바를 만드는 기준점*/
+    position: relative;
     z-index: 2;
     width: 63px;
     height: 60px;
@@ -277,7 +228,6 @@ html, body {
   .header .gnb .gnb_open span {
     position: absolute;
     right: 20px;
-    /*top값은 다 달라서 따로 클래스 불러서 준다*/
     width: 23px; /*3줄중에서 많이 있는거*/
     height: 2px;
     background-color: #fff; /*back color는 변수명 쓰지않고 바로 값준다*/
