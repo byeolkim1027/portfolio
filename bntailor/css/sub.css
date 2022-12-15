@@ -632,7 +632,7 @@ html, body {
     top: 60px;
   }
   .lnb .lnb_wrap {
-    margin: 10px 0 0 0; /*sub_visual과 lnb 사이에 떨어지는 마진값*/
+    margin: 10px 0 0 0; 
   }
   .lnb .lnb_wrap ul li {
     display: inline-block;
