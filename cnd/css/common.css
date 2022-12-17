@@ -129,7 +129,7 @@ html,body{
 }
 .header .gnb ul li{
     position: relative;
-    width: 120px;
+    width: 15%;
     text-align: center;
 }
 .header .gnb ul li a{
@@ -223,9 +223,6 @@ html,body{
         width: 160px;
         height: 30px;
     }
-    .header .gnb ul li{
-        width: 110px;
-    }
     .header .gnb ul li a{
         font-size: 17px;
     }
@@ -238,9 +235,6 @@ html,body{
     .header .logo a{
         width: 120px;
         height: 25px;
-    }
-    .header .gnb ul li{
-        width: 90px;
     }
     .header .gnb ul li a{
         font-size: 15px;
@@ -294,7 +288,7 @@ html,body{
 .footer .sns{
     position: absolute;
     right: 40px;
-    top: 40px;
+    top: 50px;
 }
 .footer .sns ul li{
     float: left;

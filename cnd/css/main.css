@@ -624,7 +624,7 @@
     z-index: 1;
 }
 .slogan h2{
-    padding: 230px 0 0 0;
+    padding: 15% 0 0 0;
     font-size: 40px;
     line-height: 1.2;
 }
@@ -758,6 +758,7 @@
     padding: 10px 60px;
     font-size: 25px;
     font-weight: 700;
+    line-height: 1.1;
 }
 .health .list ul li a p{
     font-size: 15px;
