@@ -1,0 +1,974 @@
+@import url(../css/default.css);
+@import url(../css/common.css);
+
+.visual h2{
+    position: absolute;
+    left: calc(50% - 700px);/*글자를 왼쪽으로 정렬값*/
+    top: 50%;
+    z-index: 12;
+    font-size: 65px;
+    font-weight: 700;
+    line-height: 1.2;
+    color: #FFF;
+    transform: translate(0,-50%);/*글자를 위아래 가운대로 정렬값*/
+    /*fullpage.js 플러그인에서 한 section에 글자가 단 하나만 존재할때
+      해당 글자에 line-height가 들어가면 해당 section에서는 scroll이 작동안됨*/
+}
+
+.visual .bg{
+    position: absolute;
+    /*top,bottom,left,right 모두 다 0 으로 주면
+      width:100%; height:100%; 적용되는거와 같은값이 적용된다*/
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 11;
+    background-color: rgba(0,0,0,0.3);
+}
+.visual video{
+    position:absolute;
+    left:0;
+    bottom:0;
+    top:0;
+    z-index: 10;
+    width:100%;
+    height:100%;
+    object-fit:cover; 
+}
+.visual .scroll{
+    position: absolute;
+    left: 50%;
+    bottom: 25px;
+    z-index: 12;
+    color: #FFF;
+    text-align: center;
+    transform: translate(-50%,0);
+    /*컨텐츠 넓이의 절반을 왼쪽으로 이동(left:50%로 가운데 정렬해도 글자가 정가운데로 가야해서)*/
+}
+.visual .scroll strong{
+    display: block;/*strong 테그가 인라인요소라 블록으로 바꿔줘야함 그래야 이미지 밑으로 글자가 내려감*/
+    margin-top: 8px;
+    font-size: 12px;
+    color: rgba(255,255,255,0.5);
+}
+/*fullpage 아래쪽에있는 스크롤되는 애니메이션값*/
+.visual .scroll img{
+    animation-name: scroll_move;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;/*무제한*/
+    animation-timing-function: cubic-bezier(.96,.08,.37,.98);/*가속도*/
+}
+@keyframes scroll_move{
+    0%{transform: translate(0,0);}
+    50%{transform: translate(0,-20px);}
+    100%{transform: translate(0,0);}
+}
+/*
+    transition과의 차이점
+    1. 가만히 있어도 애니메이션 효과가 적용됨(hover 하거나)
+    2. keyframes로 선언한 애니메이션의 재활용이 가능
+        a에도 적용할수있고, button에도 적용할수있다.
+    3. 애니메이션 효과를 무한반복 할수있음(transition 은 단한번만 가능)
+*/
+@media screen and (max-width:1440px){
+    .visual h2{
+        left: 20px;/*컨텐츠영역(1400px) + 양쪽 여백(20px + 20px) = 1440px 부터*/
+    }
+}
+@media screen and (max-width:1200px){
+    .visual h2{
+        font-size: 50px;
+    }
+}
+@media screen and (max-width:1000px){
+    .visual h2{
+        font-size: 40px;
+    }
+}
+@media screen and (max-width:640px){
+    /*만약 fullpage를 모바일에서 해제하고 높이를 제한해야한다면,
+      section 클래스를 준 요소말고 그 아에 있는 요소한테 높이를 줘야함
+      (div로 따로 한번더 묶어줘야한다는 소리)*/
+    .visual .inner{
+        height: 422px;
+    }
+    .visual h2{
+        font-size: 30px;
+    }
+}
+
+.numbers{
+    padding: 60px 0 0 0;
+    /* 컨텐츠가 header의 높이와 무관하게 위아래 가운데 배치되서(메뉴바가 같이 내려와 자리를 더 차지해서)
+       약간 상단여백이 부족해보임 - 그래서 상단 여백을 추가로 줌*/
+    background-color: #926D49;
+    color: #FFF;
+}
+.numbers .tit{
+    margin: 0 0 0 120px;
+}
+.numbers .tit h2{
+    margin: 0 0 30px 0;
+    font-size: 40px;
+    line-height: 1.2;
+}
+.numbers .tit h2 strong{
+    font-weight: 700;
+}
+.numbers .tit p{
+    line-height: 1.3;
+}
+.numbers .tit p span{
+    display: block;
+}
+.numbers .rate{
+    position: absolute;/*영역의 기준은 fullpage(1920px의 기준으로) 때문에 이미 잡혀있다*/
+    left: calc(50% + 100px);
+    top: calc(50% + 35px);/*.numbers 에서 준 상단 패딩값으로 컨텐츠를 조금 내려서 .rate도 같이 내려준다*/
+    width: 50%;
+    transform: translate(0,-50%);
+}
+.numbers .rate ul li{
+    position: relative;
+    margin-bottom: 60px;
+}
+.numbers .rate ul li::after{
+    position: absolute;
+    left: 0;
+    top: 90px;
+    z-index: -1;
+    width: 100%;
+    height: 1px;
+    background-color: rgba(255,255,255,0.5);
+    content: "";
+}
+.numbers .rate ul li:last-child{
+    margin-bottom: 0;
+}
+.numbers .rate ul li .num strong{
+    display: inline-block;
+    background-color: #926D49;
+    font-size: 65px;
+    font-weight: 700;
+}
+.numbers .rate ul li .num span{
+    display: inline-block;
+    position: relative;
+    padding: 0 10px 0 5px; /*뒤에 after로 그은선 안보이게 하려면 margin 말고 padding 줘야함*/
+    background-color: #926D49;
+    font-size: 25px;
+    font-weight: 700;
+}
+/*after로 선긋는 방법 2번째 */
+/* .numbers .rate ul li .num span::after{
+    position: absolute;
+    top: 20px;
+    left: 140%;
+    width: 100000%;
+    height: 1px;
+    background-color: rgba(255,255,255,0.5);
+    content: "";
+} */
+@media screen and (max-width:1440px){
+    .numbers .tit{
+        margin: 0 0 0 80px;
+    }
+}
+@media screen and (max-width:1200px){
+    /* .numbers .rate{
+        left: 50%;
+    } */
+    .numbers .rate ul li::after{
+        top: 79px;
+    }
+    .numbers .rate ul li .num strong{
+        font-size: 55px;
+    }
+}
+@media screen and (max-width:1000px){
+    .numbers .tit{
+        margin: 0 0 0 50px;
+    }
+    .numbers .tit h2{
+        margin: 0 0 20px 0;
+        font-size: 40px;
+    }
+    .numbers .rate ul li::after{
+        top: 72px;
+        width: 120%;/*20% 더 줘야한다(wrapper 영역 20 프로를 넘어가게끔)*/
+    }
+    .numbers .rate ul li .num strong{
+        font-size: 50px;
+    }
+    .numbers .rate ul li .num span{
+        font-size: 17px;
+    }
+}
+@media screen and (max-width:800px){
+    .numbers .rate{
+        left: 50%;
+    }
+    .numbers .tit{
+        margin: 0;
+    }
+    .numbers .tit h2{
+        margin: 0 0 10px 0;
+        font-size: 30px;
+    }
+    .numbers .rate ul li::after{
+        top: 60px;
+    }
+    .numbers .rate ul li .num strong{
+        font-size: 40px;
+    }
+    .numbers .rate ul li .num span{
+        font-size: 15px;
+    }
+}
+@media screen and (max-width:640px){
+    .numbers{
+        padding: 20px 0 33px 0;
+    }
+    .numbers .tit{
+        margin: 0 0 50px 0;
+    }
+    .numbers .tit h2{
+        font-size: 25px;
+    }
+    .numbers .tit p span{
+        display: inline;
+    }
+    .numbers .rate{
+        position: relative;/*영역의 기준은 fullpage(1920px의 기준으로) 때문에 이미 잡혀있다*/
+        left: auto;
+        top: auto;
+        width: auto;
+        transform: translate(0,0);
+    }
+    .numbers .rate ul li{
+        margin-bottom: 20px;
+    }
+    .numbers .rate ul li::after{
+        top: 48px;
+    }
+    .numbers .rate ul li .num strong{
+        font-size: 30px;
+    }
+    .numbers .rate ul li .num span{
+        padding: 0 7px 0 3px; /*뒤에 after로 그은선 안보이게 하려면 margin 말고 padding 줘야함*/
+        font-size: 15px;
+    }
+}
+
+
+.biz{
+    padding: 50px 0 0 0;/*메뉴바때문에 상단 여백이 하단이랑 안맞을거 같을때 주는여백*/
+    background-color: #FBF6F1;
+}
+.biz .biz_wrap{
+    /*반응형 브라우저가 줄어들때 이미지와 이너안에 있는 글자들이 양옆으로 나란히 줄어들게 하는값*/
+    display: flex;
+    align-items: center;
+}
+.biz img{
+    width: calc(100% - 523px);/*wrapper 1440, 그안에 이미지가 877px = 877/1440*100=60.90%*/
+}
+.biz .inner{
+    width: 340px; /*340/1440*100=23.61%*/
+    margin: 0 0 0 80px;
+}
+.biz a strong{
+    display: block;/*인라인 요소라서 블록을 주는게좋다*/
+}
+.biz a h2{
+    margin: 5px 0 30px 0;
+    font-size: 40px;
+    font-weight: 700;
+    line-height: 1.2;
+}
+.biz a .country{
+    margin: 20px 0 43px 0;
+    color: #666;
+}
+.biz a .more{/*more버튼 아이콘 대신 css로 그린다*/
+    position: relative;
+    width: 30px;
+    height: 30px;
+    border: 1px solid #666;
+    border-radius: 50%;/*정사각형인 경우에만, border-radius:50% 를 주면 사이즈에 상관없이 원형이 그려짐*/
+    transition: 0.5s;/*more:hover에 transform 값을 줘서 원래 선언한값에 transition 줘야 적용이 된다*/
+}
+.biz a .more::before{/*모어 버튼의 동그라미 안에있는 십자가 모양(가로선모양)*/
+    position: absolute;
+    left: 25%;/*넓이값을 50%를 줬기때문에 나머지 50을 좌우값으로 나눈다면 25가 되기때문에 left를 25%를 준다*/
+    top: 50%;
+    width: 50%;/*브라우저 사이즈에 맞게 모양이 변형되려면 %로 주는게 좋다*/
+    height: 1px;
+    background: #666;
+    content: "";
+}
+.biz a .more::after{/*(세로선모양)*/
+    position: absolute;
+    left: 50%;
+    top: 25%;
+    width: 1px;/*브라우저 사이즈에 맞게 모양이 변형되려면 %로 주는게 좋다*/
+    height: 50%;
+    background: #666;
+    content: "";
+}
+.biz a .more:hover{
+    transform: rotate(180deg);/*a 에 마우스를 오버하면 more 버튼이 내가준 각도에 맞게 돌아간다*/
+}
+@media screen and (max-width:1200px){
+    .biz img{
+        width: calc(100% - 450px);/*wrapper 1440, 그안에 이미지가 877px = 877/1440*100=60.90%*/
+    }
+    .biz .inner{
+        width: 340px; /*340/1440*100=23.61%*/
+        margin: 0 0 0 40px;
+    }
+    .biz a h2{
+        margin: 5px 0 25px 0;
+        font-size: 35px;
+    }
+    .biz a .country{
+        margin: 20px 0 0 0;
+    }
+    .biz a .more{
+        display: none;
+    }
+}
+@media screen and (max-width:1000px){
+    .biz img{
+        width: calc(100% - 400px);/*wrapper 1440, 그안에 이미지가 877px = 877/1440*100=60.90%*/
+    }
+    .biz .inner{
+        width: 300px; /*340/1440*100=23.61%*/
+        margin: 0 0 0 30px;
+    }
+    .biz a h2{
+        margin: 0 0 15px 0;
+        font-size: 30px;
+    }
+}
+@media screen and (max-width:800px){
+    .biz img{
+        width: calc(100% - 350px);/*wrapper 1440, 그안에 이미지가 877px = 877/1440*100=60.90%*/
+    }
+    .biz .inner{
+        margin: 0 0 0 20px;
+    }
+    .biz a h2{
+        margin: 0 0 10px 0;
+        font-size: 25px;
+    }
+}
+@media screen and (max-width:640px){
+    .biz{
+        padding: 62px 0 64px 0;
+    }
+    .biz .biz_wrap{
+        display: block; /*사진과 이너를 양옆으로 배치하는걸 해지*/
+    }
+    .biz img{
+        width: 100%;/*모바일에선 영역에 맞게 꽉차야해서*/
+    }
+    .biz .inner{
+        width: auto;/*pc에서 준 넓이값을 해제시키는게 auto*/
+        margin: 20px 0 0 0;
+    }
+    .biz a h2{
+        margin: 0 0 20px 0;
+        font-size: 25px;
+    }
+    .biz a .country{
+        margin: 10px 0 0 0;
+    }
+    .biz a .more{/*more버튼 아이콘 대신 css로 그린다*/
+       display: none;
+    }
+}
+
+.news{
+    padding: 50px 0 0 0;
+}
+.news h2{
+    margin: 0 55px 40px 0;
+    /*제목 오른쪽(55px)에 more버튼이 엡솔루트로 들어갈걸 감안해서 more가 들어갈 만한 영역을 여백으로줌*/
+    font-size: 40px;
+    font-weight: 700;
+    line-height: 1.2;
+}
+.news .list ul li a{/*a 테그 안에 있는 인라인테그는 블록테그로 값을줘야한다*/
+    display: block;
+}
+.news .list ul li a span{
+    display: block;
+    overflow: hidden;/*마우스 오버시 영역안에서만 바껴야해서 이값을 줘야 자기 영역안에서만 늘어남*/
+    /*이미지가 마우스 오버시overflow:hidden을줘도 
+      img테그가 블록 요소라 사이즈를 가지고있기때문에 글자행간크기를 0을 줘야함*/
+    font-size: 0;
+    line-height: 0;
+}
+.news .list ul li a span img{
+    width: 100%;
+    transition: 0.4s;
+}
+.news .list ul li a:hover span img{
+    transform: scale3d(1.2,1.2,1);/*마지막숫자는 무조건 1*/
+}
+.news .list ul li a strong{
+    display: block;
+    margin: 15px 0 0 0;
+    font-size: 17px;
+    font-weight: 700;
+    /*제목을 2줄로 고정(브라우저사이즈 줄어들때를 대비해서)*/
+    line-height: 1.5;
+    height: 3em;
+    overflow: hidden;
+}
+.news .list .btn_paging{
+    margin: 30px 0 0 0;
+    display: flex;
+    justify-content: center;
+}
+.news .list .btn_paging span{/*플러그인으로 기본으로 스타일 들어갔던거 바꾸는 값*/
+    display: block;
+    width: 7px;
+    height: 7px;
+    margin: 0 5px;
+    border-radius: 50%;
+    border: 1px solid #ED1B2D;
+    background-color: #fff;
+    opacity: 1;
+}
+.news .list .btn_paging span.swiper-pagination-bullet-active{
+    background-color: #ED1B2D;
+}
+.news .more{/*more버튼 아이콘 대신 css로 그린다*/
+    position: absolute;
+    right: 20px;/*반응형 이후 wrapper 사이즈 = 1440(+40양옆20씩) 그래서 시작점이 20을 잡아줘야함 */
+    top: 25px;
+    width: 30px;
+    height: 30px;
+    border: 1px solid #666;
+    border-radius: 50%;/*정사각형인 경우에만, border-radius:50% 를 주면 사이즈에 상관없이 원형이 그려짐*/
+    transition: 0.5s;/*more:hover에 transform 값을 줘서 원래 선언한값에 transition 줘야 적용이 된다*/
+    font-size: 0;
+    line-height: 0;
+}
+.news .more::before{/*모어 버튼의 동그라미 안에있는 십자가 모양(가로선모양)*/
+    position: absolute;
+    left: 25%;/*넓이값을 50%를 줬기때문에 나머지 50을 좌우값으로 나눈다면 25가 되기때문에 left를 25%를 준다*/
+    top: 50%;
+    width: 50%;/*브라우저 사이즈에 맞게 모양이 변형되려면 %로 주는게 좋다*/
+    height: 1px;
+    background: #666;
+    content: "";
+}
+.news .more::after{/*(세로선모양)*/
+    position: absolute;
+    left: 50%;
+    top: 25%;
+    width: 1px;/*브라우저 사이즈에 맞게 모양이 변형되려면 %로 주는게 좋다*/
+    height: 50%;
+    background: #666;
+    content: "";
+}
+.news .more:hover{
+    transform: rotate(180deg);/*a 에 마우스를 오버하면 more 버튼이 내가준 각도에 맞게 돌아간다*/
+}
+@media screen and (max-width:1000px){
+    .news h2{
+        margin: 0 55px 30px 0;
+        /*제목 오른쪽(55px)에 more버튼이 엡솔루트로 들어갈걸 감안해서 more가 들어갈 만한 영역을 여백으로줌*/
+        font-size: 35px;
+    }
+}
+@media screen and (max-width:800px){
+    .news h2{
+        margin: 0 55px 20px 0;
+        /*제목 오른쪽(55px)에 more버튼이 엡솔루트로 들어갈걸 감안해서 more가 들어갈 만한 영역을 여백으로줌*/
+        font-size: 35px;
+    }
+    .news h2 span{
+        display: block;
+    }
+    .news .more{/*more버튼 아이콘 대신 css로 그린다*/
+        top: 50px;
+    }
+}
+@media screen and (max-width:640px){
+    .news{
+        padding: 0 0 32px 0;
+    }
+    .news h2{
+        margin: 0 55px 20px 0;
+        font-size: 25px;
+    }
+    .news h2 span{
+        display: block;
+    }
+    .news .list ul li a strong{
+        margin: 10px 0 0 0;
+        font-size: 15px;
+    }
+    .news .more{/*more버튼 아이콘 대신 css로 그린다*/
+        top: 32px;
+    }
+}
+
+.support{
+    background-color: #FFF3F3;
+}
+.support .support_wrap{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.support .inner{
+    width: 40%;
+    /*535px/ 1400 *100 = 38.21% -> 이게 여유잇게 inner의 영역을 잡고 정확한 값을 %로바꾼 값*/
+}
+.support h2{
+    margin: 0 0 20px 0;
+    font-size: 40px;
+    line-height: 1.2;
+}
+.support h2 strong{
+    font-size: 50px;
+    font-weight: 700;
+    line-height: 0.8;
+}
+.support h2 span{
+    display: block;/*pc 에서 줄바꿈 모바일에서 해제*/
+}
+.support ul{
+    width: 54.28%; 
+    /* 760/1400*100 
+        ul 을 감싸는 영역 support_wrap의 pc버전 사이즈가 1400px
+        그럼 1400px 에서 ul의 pc버전 사이즈 760은 몇 % ?*/
+}
+.support ul li{
+    float: left;
+    width: calc(50% - 20px);
+    /* 중간 여백을 고정 px로 지정 나머지 li의 넓이는 %
+        (100% / li의갯수)% - (한줄의 여백의 합)px / li의 갯수
+        (100 / 2) - (40/2) = calc(50% - 20px)*/
+    margin: 0 40px 40px 0;
+    background-color: #fff;
+}
+/*왼쪽 요소와 위아래 정렬을 유지하기 위해서
+  왼쪽카드와 오른쪽 카드의 위치차이값을 한쪽요소에 몰아서 값을 주지않고 반반 부담
+  1,3 과 2,4 의 높낮이 차이값이 60px면 왼쪽요소에 30px 오른쪽요소에 30px 씩 부담
+  transform: translate(좌우값, 위아래값)로 위치조정 => 서로에게 영향 주지않고 위치조정하는방법
+  margin 이나 padding을 사용하지 않고 transform 사용*/
+.support ul li:nth-child(1),
+.support ul li:nth-child(3){
+    transform: translate(0,-30px);
+}
+.support ul li:nth-child(2),
+.support ul li:nth-child(4){
+    margin-right: 0;
+    transform: translate(0,30px);
+}
+.support ul li:nth-child(3),
+.support ul li:nth-child(4){
+    margin-bottom: 0;
+}
+.support ul li a{
+    display: block;
+    position: relative;/*아이콘을 넣어야해서 기준점*/
+    height: 250px;/*a테그가 잘눌려야해서 height를 a 한테 준다*/
+    padding: 60px 13.88% 0 13.88%;
+    /* li의 넓이가 %(높이는 고정)
+       그 안에 여백도 %인게 좋음(일부, 원래 여백이 작은 디자인은 고정값을 주기도함)
+       li넓이 = 360px 에서 여백 40px은 몇 % ?
+       50/360*100 =13.88% 
+       높이(li의height)는 px로 값을 줬기때문에 위쪽 padding값도 px
+       - 높이는 %로 하기가 쉽지 않음*/
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+.support ul li a::after{
+    position: absolute;
+    right: 22px;
+    bottom: 27px;
+    /*before와 after에 배경이미지를 넣는경우 반드시! width&height 가 있어야함
+      없으면 나타나지 않음*/
+    width: 70px;
+    height: 68px;
+    background-repeat: no-repeat;
+    background-position: center center;
+    content: "";
+}
+.support ul li.campaign a::after{
+    background-image: url(../images/main/support_ico1.svg);
+}
+.support ul li.lan a::after{
+    background-image: url(../images/main/support_ico2.svg);
+}
+.support ul li.spon a::after{
+    background-image: url(../images/main/support_ico3.svg);
+}
+.support ul li.member a::after{
+    background-image: url(../images/main/support_ico4.svg);
+}
+.support ul li a span{
+    display: block;
+    color: #666;
+}
+.support ul li a strong{
+    display: block;
+    font-size: 30px;
+    font-weight: 700;
+}
+/* 마우스 오버시 색상변경 & active 클래스 */
+.support ul li a:hover,
+.support ul li.active a{
+    background-color: #ED1B2D;
+    color: #fff;
+}
+.support ul li a:hover span,
+.support ul li.active a span{
+    color: #fff;
+}
+.support ul li.campaign a:hover::after,
+.support ul li.campaign.active a::after{
+    background-image: url(../images/main/support_ico1_w.svg);
+}
+.support ul li.lan a:hover::after,
+.support ul li.lan.active a::after{
+    background-image: url(../images/main/support_ico2_w.svg);
+}
+.support ul li.spon a:hover::after,
+.support ul li.spon.active a::after{
+    background-image: url(../images/main/support_ico3_w.svg);
+}
+.support ul li.member a:hover::after,
+.support ul li.member.active a::after{
+    background-image: url(../images/main/support_ico4_w.svg);
+}
+/* 마우스 오버 효과 - 왼쪽상단으로 이동*/
+.support ul li a{/*천천히 바뀌는값(li에줬던값을 모두 a 한테 주는값)*/
+    transition: transform 0.3s, background-color 0.2s, box-shadow 0.5s;
+}
+.support ul li a::after{/*아이콘 이미지가 천천히 바뀌는값*/
+    transition: 0.3s;
+}
+.support ul li a:hover{
+    transform: translate(-10px,-10px);
+    box-shadow: 10px 10px 20px rgba(0,0,0,0.1);
+}
+@media screen and (max-width:1440px){
+    .support h2 span{
+        display: inline;/*브라우저 줄어들때 강제로 줄바꿈 없앰*/
+    }
+}
+@media screen and (max-width:1200px){
+    .support h2{
+        font-size: 35px;
+    }
+    .support h2 strong{
+        font-size: 45px;
+    }
+    .support .inner{
+        width: 35%;
+        /**/
+    }
+    .support ul li{
+        width: calc(50% - 15px);
+        /* 중간 여백을 고정 px로 지정 나머지 li의 넓이는 %
+            (100% / li의갯수)% - (한줄의 여백의 합)px / li의 갯수
+            (100 / 2) - (40/2) = calc(50% - 20px)*/
+        margin: 0 30px 30px 0;
+    }
+    .support ul li a{
+        height: 200px;
+        padding: 40px 10.88% 0 10.88%;
+    }
+    .support ul li a span{
+        font-size: 13px;
+    }
+    .support ul li a strong{
+        font-size: 25px;
+    }
+    .support ul li a::after{
+        right: 10px;
+        bottom: 10px;
+        transform: scale3d(0.9,0.9,1);
+        /*3d 뭐뭐가 들어가면 마지막값은 가운데로 줄어들고 늘어나고 하는값임
+          아이콘 이미지로 넣은거 크기 조절하는값*/
+    }
+}
+@media screen and (max-width:1000px){
+    .support h2{
+        font-size: 30px;
+    }
+    .support h2 strong{
+        font-size: 40px;
+    }
+    .support p{
+        font-size: 15px;
+    }
+    .support ul li{
+        width: calc(50% - 10px);
+        margin: 0 20px 20px 0;
+    }
+}
+@media screen and (max-width:800px){
+    .support .support_wrap{
+        display: block;/*flex 해제시켜서 ul이 오른쪽에서 아래로 내려오게끔하는값*/
+        padding: 40px 0 60px 0;
+    }
+    .support .inner{
+        width: auto;/*넓이해제*/
+        margin: 0 0 20px 0;
+    }
+    .support h2{
+        margin: 0 0 10px 0;
+    }
+    .support h2 strong{
+        font-size: 35px;
+    }
+    .support p{
+        font-size: 13px;
+    }
+    .support ul{
+        width: auto; 
+        /* li들이 하나씩 떨어저야해서 넓이값없음
+            li 들이 아직 800px에서도 float:left;를 가지고 있어서 li들이 한줄에 2개씩 나온다*/
+    }
+    .support ul li:nth-child(1),
+    .support ul li:nth-child(3){
+        transform: translate(0,0);/*해제값이 0 값임*/
+    }
+    .support ul li:nth-child(2),
+    .support ul li:nth-child(4){
+        transform: translate(0,0);
+    }
+    .support ul li a{
+        height: 100px;
+        padding: 20px 25px 0 25px;
+        /* 픽셀로 여백을 다시줘도됨 (모바일에서는 320 최소 넓이 밑으로는 더이상 반응형 안해서)*/
+    }
+    .support ul li a::after{
+        right: 0;
+        bottom: -6px;
+        transform: scale3d(0.6,0.6,1);
+        /*3d 뭐뭐가 들어가면 마지막값은 가운데로 줄어들고 늘어나고 하는값임
+          아이콘 이미지로 넣은거 크기 조절하는값*/
+    }
+    .support ul li a strong{
+        font-size: 20px;
+    }
+    /* 마우스 오버시 따로 바꾸지 않아도된다 */
+}
+@media screen and (max-width:640px){
+    .support h2{
+        font-size: 25px;
+    }
+    .support h2 strong{
+        font-size: 27px;
+    }
+    .support ul li{
+        float: none;
+        width: auto;/*넓이 풀어줘서 영역에 다 맞게*/
+        margin: 0 0 10px 0;/*모바일 버전에서 li들의 사이여백*/
+    }
+    .support ul li:nth-child(3){
+        margin-bottom: 10px;
+        /*pc버전에서 뺐던 3번째 li의 여백을 다시 줘야 일정한 여백으로 li들이 정렬된다*/
+    }
+    .support ul li a{
+        height: 85px;/*모바일에서 디자인한값을 그대로 준다*/
+        padding: 18px 20px 0 20px;
+        /* 픽셀로 여백을 다시줘도됨 (모바일에서는 320 최소 넓이 밑으로는 더이상 반응형 안해서)*/
+    }
+    .support ul li a::after{
+        right: 8px;
+        bottom: 8px;
+        transform: scale3d(0.7,0.7,1);
+        /*3d 뭐뭐가 들어가면 마지막값은 가운데로 줄어들고 늘어나고 하는값임
+          아이콘 이미지로 넣은거 크기 조절하는값*/
+    }
+    .support ul li a strong{
+        font-size: 20px;
+    }
+    /* 마우스 오버시 따로 바꾸지 않아도된다 */
+
+}
+
+/* fullpage 공통사항 */
+
+
+/*오른쪽 네비게이션 디자인 변경
+  선택자가 #fp-nav ul li인 것과 body #fp-nav ul li 인것이 동시에 존재한다면
+  body 부터 선언한 요소가 먼저 적용됩니다(단,뒤에불리는 선택자가 무조건 똑같아야함)*/
+body #fp-nav ul li{
+    width: 12px;
+    height: 12px;
+    margin: 10px;
+}
+body #fp-nav ul li:last-child{/*푸터의네비게이션 마지막 동그라미 삭제*/
+    display: none;
+}
+body #fp-nav ul li a span,
+body #fp-nav ul li:hover a span{
+    height: 6px;
+    width: 6px;
+    border: 0;
+    background: #fff;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    margin: 0;
+}
+body #fp-nav ul li a.active span,
+body #fp-nav ul li:hover a.active span{
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    background: #ED1B2D;
+}
+body #fp-nav ul li .fp-tooltip {
+    top: -2px;
+    right: 30px !important;
+    background-color: #ED1B2D;
+    border-radius: 5px;
+    color: #fff;
+    font-size: 13px;
+    font-family: 'Noto Sans KR', 'NanumGothic', 'Malgun Gothic', 'Apple SD Gothic', 'Apple SD Gothic Neo', 'Dotum', sans-serif;
+    max-width: max-content;/*컨텐츠 있는만큼 영역 다 */
+    padding: 1px 10px 2px 10px;
+    overflow: visible;
+    width: auto;
+}
+body #fp-nav ul li .fp-tooltip::after{
+    position: absolute;
+    right: -2px;
+    top: 6px;
+    width: 10px;
+    height: 10px;
+    background-color: #ED1B2D;
+    transform: rotate(45deg);
+    content: "";
+}
+
+/*어두운 툴팁*/
+body #fp-nav.black ul li a span,
+body #fp-nav.black ul li:hover a span{
+    background: #ccc;
+}
+body #fp-nav.black ul li a.active span,
+body #fp-nav.black ul li:hover a.active span{
+    background: #1d1d1d;
+}
+body #fp-nav.black ul li .fp-tooltip {
+    background-color: #1d1d1d;
+}
+body #fp-nav.black ul li .fp-tooltip::after{
+    background-color: #1d1d1d;
+}
+
+/*모바일에서 fullpage적용 해제하는데 발생하는 오류 수정*/
+.fp-watermark{/*fullpage copyright 삭제*/
+    display: none;
+}
+body .section.fp-auto-height .fp-overflow,/*footer에서의 여백*/
+body.fp-responsive .section .fp-overflow{ /*모바일fullpage해제*/
+    /* - footer 처럼 높이를 자유롭게 설정하는 section은 임의의 상하단 여백 안줌
+       - 모바일에서 fullpage를 해제한경우에도 여백을 뺀다.*/
+    padding: 0;
+}
+body .section .fp-overflow{
+    overflow: visible;
+    padding: 100px 0;
+    /* fullpage에서 컨텐츠 영역을 fp-overflow로 잡는데 
+        그 영역으로 이동된 컨텐츠가 있으면 그영역을 스크롤 한다고 판단해서
+        다음섹션으로 스크롤을 넘기지 않음.
+        그래서 컨텐츠를 감싸는 fp-overflow한테 (fullpage.js가 맘대로 만든 div)
+        상하단에 임의의 여백 100px을 줌(더 많이 줘도됨)
+        만약에 영역밖으로 나가는 컨텐츠가 있으면 fp-overflow영역을 꼭 확인해야함*/
+}
+
+.fp-responsive .fp-is-overflow.fp-section{
+    min-height: auto !important;
+    /*  fullpage.js 에서fullpage를 안할때 body에 주는 클래스명 .fp-responsive
+        fullpage.js 에서 640 이하일때는 fullpage 적용하지 않도록함
+        근데 이때 min-height이 해제 되지않아서 이전 fullpage 높이가 잡힘
+        그래서 min-height: auto; 를 줘야하는 상황
+        visual에 min-height:auto; 적용되지않음(css 적용 우선순위에 밀려서)
+        이때 내가 적용한 값을 먼저 적용하게 하는게
+        min-height: auto !important;
+        
+        이때 플러그인을 써서 내가 주지않을 스타일을 고쳐서 쓸때만 !important;*/
+}
+@media screen and (min-width:641px){
+    /* visual이 로딩됬을때 에니메이션
+    글자가 밑에서 위로 나타남*/
+
+    /* .visual h2 span{
+        display: block;
+        transition: 0.5s;
+        opacity: 0;
+        transform: translate(0,200px);
+    }
+    .visual.fp-completely h2 span{
+        opacity: 1;
+        transform: translate(0,0);
+    } */
+    /* 글자 줄수 대로 한줄씩 한줄씩 밑에서 위로 올라오게 하는 애니메이션*/
+    .visual h2 .block{
+        display: block;
+        overflow: hidden;
+    }
+    .visual h2 .block span{
+        display: block;
+        transition: 0.8s;
+        transform: translate(0,300px);
+    }
+    .visual h2 .block:nth-child(2) span{
+        transition-delay: 0.2s;
+    }
+    .visual h2 .block:nth-child(3) span{
+        transition-delay: 0.4s;
+    }
+    .visual.fp-completely h2 .block span{
+        transform: translate(0,0);
+    }
+
+    /* numbers 애니메이션 */
+    .numbers .tit{
+        transition: 0.8s;
+        opacity: 0;
+        transform: translate(-200px,0);
+    }
+    .numbers.fp-completely .tit{
+        opacity: 1;
+        transform: translate(0,0);
+    }
+
+    /* biz 애니메이션*/
+    .biz img{
+        transition: 0.7s;
+        opacity: 0;
+        transform: translate(0,-300px);
+    }
+    .biz .inner{
+        transition: 0.7s;
+        transition-delay: 0.5s;/*변환을 0.5s 이후에 함 */
+        opacity: 0;
+        transform: translate(300px,0);
+    }
+    .biz.fp-completely img{
+        opacity: 1;
+        transform: translate(0,0);
+    }
+    .biz.fp-completely .inner{
+        opacity: 1;
+        transform: translate(0,0);
+    }
+    
+
+}/*fullpage가 적용될때만 효과가 들어감*/
