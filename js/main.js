@@ -1,6 +1,6 @@
 $(document).ready(function(){
     "use strict"
-    const content = "Hello, I am Web publisher Byeol Kim."
+    const content = "Hello, Click My Works to See unlimitied possibilities."
     const text = document.querySelector(".typing")
     let index = 0
 

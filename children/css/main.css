@@ -926,7 +926,7 @@ body .section .fp-overflow{
     .visual h2 .block span{
         display: block;
         transition: 0.8s;
-        transform: translate(0,300px);
+        transform: translate(0,350px);
     }
     .visual h2 .block:nth-child(2) span{
         transition-delay: 0.2s;

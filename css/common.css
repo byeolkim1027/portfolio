@@ -109,6 +109,9 @@ html,body{
     color: #FFF;
     background-color: rgba(147,179,194,0.5);
 }
+.header .gnb{
+    position: relative;
+}
 .header .gnb ul{
     height: 80px;
     display: flex;
@@ -141,6 +144,24 @@ html,body{
 }
 .header .gnb ul li:hover a{
     border-bottom: 2px solid #FFF;
+}
+.header .gnb .resume{
+    position: absolute;
+    top: 10px;
+    right: 5%;
+    width: 160px;
+}
+.header .gnb .resume a{
+    display: block;
+    padding: 0 20px;
+    height: 60px;
+    border: 1px solid #fff;
+}
+.header .gnb .resume a span{
+    display: block;
+    text-align: center;
+    font-family: 'Cafe24Shiningstar';
+    font-size: 40px;
 }
 .header.is_up{
     transform: translateY(-100%);
